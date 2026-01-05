@@ -1,248 +1,257 @@
-import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { useRef } from "react";
 import { toast } from "sonner";
-import { Image, Link2, Moon, Sun } from "lucide-react";
 
-import EditorPanel from "../components/organisms/EditorPanel";
-import PanelCard from "../components/organisms/PanelCard";
-import UserNavbar from "../components/organisms/UserNavbar";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Badge } from "../components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import PageTransition from "../components/layouts/PageTransition";
+import UserLayout from "../components/layouts/UserLayout";
+import MaterialIcon from "../components/atoms/MaterialIcon";
 
 const UploadPage = () => {
-  const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains("dark"));
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
-  }, [isDark]);
+  const theoryRef = useRef<HTMLDivElement | null>(null);
+  const practiceRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-sans min-h-screen flex flex-col transition-colors duration-200">
-      <UserNavbar />
-      <div className="flex flex-1 overflow-hidden">
-        <aside className="w-64 flex-shrink-0 border-r border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark flex flex-col h-full">
-        <div className="p-4 border-b border-border-light dark:border-border-dark flex items-center justify-between">
-          <h1 className="text-xl font-bold flex items-center gap-2">Learn AI</h1>
-          <div className="flex gap-2 text-text-muted-light dark:text-text-muted-dark">
-            <Button onClick={() => toast.message("Link copied to clipboard.")} size="icon" variant="ghost">
-              <Link2 className="h-4 w-4" />
-            </Button>
-            <Button onClick={() => setIsDark((prev) => !prev)} size="icon" variant="ghost">
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button>
-          </div>
-        </div>
-        <nav className="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1">
-          <Link
-            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-            to="/dashboard">
-            Tổng quan
-          </Link>
-          <Link
-            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-            to="/courses">
-            Project Ideas
-          </Link>
-          <div className="pt-4 pb-1 px-3 text-xs font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider">
-            Content Management
-          </div>
-          <Link
-            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-primary bg-blue-50 dark:bg-blue-900/20 rounded-md"
-            to="/upload">
-            Create Post
-          </Link>
-          <Link
-            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-            to="/library">
-            All Posts
-          </Link>
-          <Link
-            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-            hash="categories"
-            to="/library">
-            Categories
-          </Link>
-        </nav>
-        <div className="p-4 border-t border-border-light dark:border-border-dark">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">
-              JD
+    <UserLayout activeNav="my-posts" searchPlaceholder="Search for courses, articles, or tags...">
+      <PageTransition>
+        <div className="max-w-[1400px] mx-auto flex flex-col gap-8 h-full">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Create New Post</h1>
+                <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
+                  Compose your educational content with theory and practice sections.
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  className="px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors bg-white dark:bg-[#1a2234]"
+                  onClick={() => toast.success("Draft saved.")}
+                  type="button"
+                >
+                  Save Draft
+                </button>
+                <button
+                  className="px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 shadow-lg shadow-primary/25 transition-all flex items-center gap-2"
+                  onClick={() => toast.success("Post published.")}
+                  type="button"
+                >
+                  <MaterialIcon className="text-lg" name="publish" />
+                  Publish
+                </button>
+              </div>
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">John Doe</p>
-              <p className="text-xs text-text-muted-light dark:text-text-muted-dark truncate">Admin</p>
-            </div>
-          </div>
-        </div>
-      </aside>
-      <main className="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
-        <header className="h-16 flex items-center justify-between px-6 border-b border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark flex-shrink-0 z-10">
-          <div className="flex items-center gap-4">
-            <h2 className="text-lg font-semibold text-text-main-light dark:text-text-main-dark">Create New Blog Post</h2>
-            <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-100">Draft</Badge>
-          </div>
-          <div className="flex items-center gap-3">
-            <Button onClick={() => toast.message("Preview opened.")} variant="ghost">
-              Preview
-            </Button>
-            <Button onClick={() => toast.success("Draft saved.")} variant="outline">
-              Save Draft
-            </Button>
-            <Button onClick={() => toast.success("Post published.")}>Publish</Button>
-          </div>
-        </header>
-        <div className="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10">
-          <div className="max-w-[1600px] mx-auto grid grid-cols-1 xl:grid-cols-3 gap-8">
-            <div className="xl:col-span-2 space-y-6">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-text-muted-light dark:text-text-muted-dark" htmlFor="post-title">
+            <div className="bg-white dark:bg-[#1a2234] p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-5">
+              <div className="w-full">
+                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
                   Post Title
                 </label>
-                <Input id="post-title" placeholder="Enter an engaging title..." />
-              </div>
-              <div className="flex items-center gap-2 text-sm text-text-muted-light dark:text-text-muted-dark bg-gray-50 dark:bg-gray-800/50 p-2 rounded border border-border-light dark:border-border-dark">
-                <Link2 className="h-4 w-4" />
-                <span className="select-none opacity-70">learn-ai.com/blog/</span>
-                <Input className="h-6 border-none bg-transparent p-0 text-sm" defaultValue="enter-an-engaging-title" />
-              </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
-                <EditorPanel
-                  content={
-                    <div className="editor-content" contentEditable suppressContentEditableWarning>
-                      <h2>Introduction to Chains</h2>
-                      <p>Chains allow you to connect multiple processing steps. Simple Chains process sequentially.</p>
-                      <p className="text-gray-400">Write theory content here...</p>
-                    </div>
-                  }
-                  footerLeft="Words: 15"
-                  footerRight="Last saved: Just now"
-                  icon="menu_book"
-                  iconClassName="text-primary"
-                  selectOptions={["Paragraph", "Heading 1", "Heading 2"]}
-                  title="Lý thuyết"
-                  toolbarGroups={[["format_bold", "format_italic", "format_underlined"], ["format_list_bulleted", "code"], ["image"]]}
+                <input
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary placeholder-slate-400 text-lg font-medium"
+                  placeholder="e.g., Understanding React Hooks in 2024"
+                  type="text"
                 />
-                <EditorPanel
-                  content={
-                    <div className="editor-content" contentEditable suppressContentEditableWarning>
-                      <pre className="bg-gray-800 text-gray-100 p-4 rounded-md font-mono text-sm">
-{`const chain = new SimpleChain({
-  model: 'gpt-4',
-  temperature: 0.7
-});`}
-                      </pre>
-                      <p className="text-gray-400 mt-4">Write practice exercises or code examples here...</p>
-                    </div>
-                  }
-                  footerLeft="Words: 12"
-                  footerRight="Last saved: Just now"
-                  icon="code"
-                  iconClassName="text-green-600"
-                  selectOptions={["Code Block", "Paragraph", "Heading 1"]}
-                  title="Thực hành"
-                  toolbarGroups={[["format_bold", "format_italic", "format_underlined"], ["format_list_numbered", "code"], ["image"]]}
-                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+                    Tags / Categories
+                  </label>
+                  <div className="relative">
+                    <MaterialIcon
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
+                      name="label"
+                    />
+                    <input
+                      className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      placeholder="Add tags separated by comma..."
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+                    Assign to Folder
+                  </label>
+                  <div className="relative">
+                    <MaterialIcon
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
+                      name="folder_open"
+                    />
+                    <select className="w-full pl-10 pr-10 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary appearance-none">
+                      <option disabled value="">
+                        Select a folder...
+                      </option>
+                      <option value="web">Web Development</option>
+                      <option value="data">Data Science</option>
+                      <option value="algo">Algorithms</option>
+                      <option value="new">+ Create New Folder</option>
+                    </select>
+                    <MaterialIcon
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-lg"
+                      name="expand_more"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="xl:col-span-1 space-y-6">
-              <PanelCard
-                className="shadow-sm"
-                title="Post Settings"
-                titleClassName="text-sm font-semibold text-text-main-light dark:text-text-main-dark">
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5">Visibility</label>
-                    <Select defaultValue="Public">
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select visibility" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Public">Public</SelectItem>
-                        <SelectItem value="Private">Private</SelectItem>
-                        <SelectItem value="Members Only">Members Only</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5">Publish Date</label>
-                    <Input type="date" />
-                  </div>
-                </div>
-              </PanelCard>
-              <PanelCard className="shadow-sm" title="Taxonomy" titleClassName="text-sm font-semibold text-text-main-light dark:text-text-main-dark">
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5">Folder</label>
-                    <Select defaultValue="">
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a folder" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="AI Fundamentals">AI Fundamentals</SelectItem>
-                        <SelectItem value="Advanced LLM">Advanced LLM</SelectItem>
-                        <SelectItem value="Projects">Projects</SelectItem>
-                        <SelectItem value="Uncategorized">Uncategorized</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5">Category</label>
-                    <Select defaultValue="Orchestration">
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="LLM Fundamentals">LLM Fundamentals</SelectItem>
-                        <SelectItem value="Orchestration">Orchestration</SelectItem>
-                        <SelectItem value="RAG">RAG</SelectItem>
-                        <SelectItem value="Agents">Agents</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5">Tags</label>
-                    <div className="p-2 bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-md min-h-[80px] flex flex-wrap gap-2 content-start">
-                      <Badge className="bg-blue-100 text-blue-800">#langchain</Badge>
-                      <Badge className="bg-blue-100 text-blue-800">#routing</Badge>
-                      <Input className="border-none bg-transparent h-6 w-24 p-0 text-xs" placeholder="+ Add tag" />
+          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-6 flex-1">
+            <div className="flex flex-col gap-3 h-full">
+              <div className="flex items-center justify-between px-1">
+                <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span className="size-6 rounded bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 flex items-center justify-center">
+                    <MaterialIcon className="text-sm" name="menu_book" />
+                  </span>
+                  Theory
+                  <span className="text-slate-400 font-normal text-sm ml-1">(Ly thuyet)</span>
+                </h2>
+              </div>
+              <div className="bg-white dark:bg-[#1a2234] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col flex-1 min-h-[500px] overflow-hidden">
+                <div className="p-4 border-b border-slate-100 dark:border-slate-800/50">
+                  <label className="group flex items-center justify-center w-full h-20 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-lg cursor-pointer hover:border-primary hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all">
+                    <div className="flex flex-col items-center gap-1 text-slate-400 group-hover:text-primary transition-colors">
+                      <div className="flex items-center gap-2">
+                        <MaterialIcon className="text-xl" name="add_photo_alternate" />
+                        <span className="text-xs font-semibold">Add Theory Image</span>
+                      </div>
                     </div>
-                  </div>
+                    <input className="hidden" type="file" />
+                  </label>
                 </div>
-              </PanelCard>
-              <PanelCard className="shadow-sm" title="Featured Image" titleClassName="text-sm font-semibold text-text-main-light dark:text-text-main-dark">
+                <div className="flex items-center gap-1 p-2 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 overflow-x-auto">
+                  {[
+                    { name: "format_bold", title: "Bold" },
+                    { name: "format_italic", title: "Italic" },
+                    { name: "format_underlined", title: "Underline" },
+                  ].map((item) => (
+                    <button
+                      className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"
+                      key={item.name}
+                      title={item.title}
+                      type="button"
+                    >
+                      <MaterialIcon className="text-lg" name={item.name} />
+                    </button>
+                  ))}
+                  <div className="w-px h-4 bg-slate-300 dark:bg-slate-700 mx-1" />
+                  {[
+                    { name: "format_list_bulleted", title: "Bullet List" },
+                    { name: "format_list_numbered", title: "Numbered List" },
+                  ].map((item) => (
+                    <button
+                      className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"
+                      key={item.name}
+                      title={item.title}
+                      type="button"
+                    >
+                      <MaterialIcon className="text-lg" name={item.name} />
+                    </button>
+                  ))}
+                  <div className="w-px h-4 bg-slate-300 dark:bg-slate-700 mx-1" />
+                  {[
+                    { name: "link", title: "Link" },
+                    { name: "format_quote", title: "Quote" },
+                  ].map((item) => (
+                    <button
+                      className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"
+                      key={item.name}
+                      title={item.title}
+                      type="button"
+                    >
+                      <MaterialIcon className="text-lg" name={item.name} />
+                    </button>
+                  ))}
+                </div>
                 <div
-                  className="border-2 border-dashed border-border-light dark:border-border-dark rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
-                  onClick={() => toast.message("Upload coming soon.")}>
-                  <Image className="h-6 w-6 text-text-muted-light dark:text-text-muted-dark group-hover:text-primary mb-2" />
-                  <p className="text-xs text-text-muted-light dark:text-text-muted-dark">Click to upload or drag and drop</p>
-                  <p className="text-[10px] text-gray-400 mt-1">SVG, PNG, JPG or GIF (max. 2MB)</p>
+                  className="flex-1 p-5 overflow-y-auto cursor-text"
+                  onClick={() => theoryRef.current?.focus()}
+                >
+                  <div
+                    className="editor-content outline-none text-slate-700 dark:text-slate-300 leading-relaxed min-h-full"
+                    contentEditable
+                    data-placeholder="Start writing the theoretical explanation here..."
+                    ref={theoryRef}
+                    suppressContentEditableWarning
+                  />
                 </div>
-              </PanelCard>
-              <PanelCard
-                className="shadow-sm"
-                title="SEO Preview"
-                titleClassName="text-sm font-semibold text-text-main-light dark:text-text-main-dark"
-                headerRight={<Badge className="bg-green-100 text-green-600">Good</Badge>}>
-                <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded border border-border-light dark:border-border-dark">
-                  <p className="text-xs text-text-muted-light dark:text-text-muted-dark truncate">
-                    https://learn-ai.com/blog/enter-an-engaging-title
-                  </p>
-                  <p className="text-sm text-blue-600 dark:text-blue-400 font-medium truncate mt-0.5">
-                    Introduction to Chains &amp; Routing - Learn AI
-                  </p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
-                    Learn how to connect multiple processing steps with LLMs to create complex workflows using Simple Chains and Router Patterns.
-                  </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 h-full">
+              <div className="flex items-center justify-between px-1">
+                <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span className="size-6 rounded bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 flex items-center justify-center">
+                    <MaterialIcon className="text-sm" name="terminal" />
+                  </span>
+                  Practice
+                  <span className="text-slate-400 font-normal text-sm ml-1">(Thuc hanh)</span>
+                </h2>
+              </div>
+              <div className="bg-white dark:bg-[#1a2234] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col flex-1 min-h-[500px] overflow-hidden">
+                <div className="p-4 border-b border-slate-100 dark:border-slate-800/50">
+                  <label className="group flex items-center justify-center w-full h-20 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-lg cursor-pointer hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10 transition-all">
+                    <div className="flex flex-col items-center gap-1 text-slate-400 group-hover:text-emerald-600 transition-colors">
+                      <div className="flex items-center gap-2">
+                        <MaterialIcon className="text-xl" name="add_photo_alternate" />
+                        <span className="text-xs font-semibold">Add Practice Image</span>
+                      </div>
+                    </div>
+                    <input className="hidden" type="file" />
+                  </label>
                 </div>
-              </PanelCard>
+                <div className="flex items-center gap-1 p-2 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 overflow-x-auto">
+                  {[
+                    { name: "format_bold", title: "Bold" },
+                    { name: "format_italic", title: "Italic" },
+                  ].map((item) => (
+                    <button
+                      className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"
+                      key={item.name}
+                      title={item.title}
+                      type="button"
+                    >
+                      <MaterialIcon className="text-lg" name={item.name} />
+                    </button>
+                  ))}
+                  <div className="w-px h-4 bg-slate-300 dark:bg-slate-700 mx-1" />
+                  {[
+                    { name: "code", title: "Code Block" },
+                    { name: "terminal", title: "Terminal" },
+                  ].map((item) => (
+                    <button
+                      className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"
+                      key={item.name}
+                      title={item.title}
+                      type="button"
+                    >
+                      <MaterialIcon className="text-lg" name={item.name} />
+                    </button>
+                  ))}
+                  <div className="w-px h-4 bg-slate-300 dark:bg-slate-700 mx-1" />
+                  <button
+                    className="p-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors"
+                    title="Link"
+                    type="button"
+                  >
+                    <MaterialIcon className="text-lg" name="link" />
+                  </button>
+                </div>
+                <div
+                  className="flex-1 p-5 overflow-y-auto cursor-text bg-slate-50/30 dark:bg-black/10"
+                  onClick={() => practiceRef.current?.focus()}
+                >
+                  <div
+                    className="editor-content outline-none text-slate-700 dark:text-slate-300 font-mono text-sm leading-relaxed min-h-full"
+                    contentEditable
+                    data-placeholder="Write practice steps, code snippets, or exercises here..."
+                    ref={practiceRef}
+                    suppressContentEditableWarning
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </main>
-      </div>
-    </div>
+      </PageTransition>
+    </UserLayout>
   );
 };
 

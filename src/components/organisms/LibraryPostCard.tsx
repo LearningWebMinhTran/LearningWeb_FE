@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Calendar, Clock, FolderPlus, ArrowRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
@@ -14,7 +13,7 @@ type LibraryPostCardProps = {
   excerpt: string;
   dateLabel: string;
   readTime: string;
-  href: string;
+  onSelect?: () => void;
   onAddToFolder?: () => void;
   authorName: string;
   authorImage: string;
@@ -30,12 +29,23 @@ const LibraryPostCard = ({
   excerpt,
   dateLabel,
   readTime,
-  href,
+  onSelect,
   onAddToFolder,
   authorName,
   authorImage,
   authorAlt,
 }: LibraryPostCardProps) => {
+  const TitleContent = onSelect ? (
+    <button
+      className="text-left text-xl md:text-2xl font-bold text-[#0d121b] dark:text-white group-hover:text-primary transition-colors"
+      onClick={onSelect}
+      type="button">
+      {title}
+    </button>
+  ) : (
+    <span className="text-xl md:text-2xl font-bold text-[#0d121b] dark:text-white">{title}</span>
+  );
+
   return (
     <Card className="group flex flex-col md:flex-row gap-6 p-5 shadow-sm border border-transparent hover:border-primary/20 transition-all hover:shadow-md cursor-grab active:cursor-grabbing">
       <div className="w-full md:w-64 h-48 md:h-auto shrink-0 overflow-hidden rounded-lg bg-gray-200 relative">
@@ -60,7 +70,7 @@ const LibraryPostCard = ({
           </span>
         </div>
         <h3 className="text-xl md:text-2xl font-bold text-[#0d121b] dark:text-white group-hover:text-primary transition-colors">
-          <Link to={href}>{title}</Link>
+          {TitleContent}
         </h3>
         <p className="text-[#4c669a] dark:text-gray-400 text-sm md:text-base leading-relaxed line-clamp-2">
           {excerpt}
@@ -82,12 +92,12 @@ const LibraryPostCard = ({
               variant="ghost">
               <FolderPlus className="h-4 w-4" />
             </Button>
-            <Button asChild variant="link">
-              <Link to={href}>
+            {onSelect ? (
+              <Button onClick={onSelect} variant="link">
                 Read More
                 <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+              </Button>
+            ) : null}
           </div>
         </div>
       </CardContent>

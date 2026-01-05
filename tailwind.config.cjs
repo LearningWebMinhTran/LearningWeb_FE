@@ -5,8 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#135bec",
-        "primary-hover": "#2563eb",
+        primary: "#0881a3",
+        "primary-hover": "#077292",
+        "primary-dark": "#055d75",
         "background-light": "#f8f9fc",
         "background-dark": "#101622",
         "surface-light": "#ffffff",
@@ -17,6 +18,18 @@ module.exports = {
         "text-main-dark": "#f3f4f6",
         "text-muted-light": "#6b7280",
         "text-muted-dark": "#9ca3af",
+        blue: {
+          50: "#e9f7fa",
+          100: "#d1eef4",
+          200: "#a8dde8",
+          300: "#77cadd",
+          400: "#3fb4cc",
+          500: "#0881a3",
+          600: "#077292",
+          700: "#055d75",
+          800: "#04485d",
+          900: "#033544",
+        },
       },
       fontFamily: {
         display: ["Lexend", "Noto Sans", "sans-serif"],

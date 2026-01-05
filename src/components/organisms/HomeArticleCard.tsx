@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Calendar } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { Badge } from "../ui/badge";
@@ -12,7 +11,7 @@ type HomeArticleCardProps = {
   title: string;
   excerpt: string;
   metaLabel: string;
-  href: string;
+  onSelect?: () => void;
   authorName: string;
   authorImage: string;
   authorAlt: string;
@@ -26,11 +25,22 @@ const HomeArticleCard = ({
   title,
   excerpt,
   metaLabel,
-  href,
+  onSelect,
   authorName,
   authorImage,
   authorAlt,
 }: HomeArticleCardProps) => {
+  const TitleContent = onSelect ? (
+    <button
+      className="mb-2 text-left text-xl font-bold text-[#0d121b] dark:text-white group-hover:text-primary transition-colors line-clamp-2"
+      onClick={onSelect}
+      type="button">
+      {title}
+    </button>
+  ) : (
+    <span className="mb-2 text-xl font-bold text-[#0d121b] dark:text-white line-clamp-2">{title}</span>
+  );
+
   return (
     <Card className="group flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md">
       <div className="relative h-48 overflow-hidden">
@@ -47,11 +57,7 @@ const HomeArticleCard = ({
           <Calendar className="h-3.5 w-3.5" />
           {metaLabel}
         </div>
-        <Link
-          className="mb-2 text-xl font-bold text-[#0d121b] dark:text-white group-hover:text-primary transition-colors line-clamp-2"
-          to={href}>
-          {title}
-        </Link>
+        {TitleContent}
         <p className="mb-4 flex-1 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">
           {excerpt}
         </p>

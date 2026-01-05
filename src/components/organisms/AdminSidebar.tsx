@@ -9,6 +9,9 @@ type AdminSidebarProps = {
   active?: AdminNavKey;
 };
 
+const APP_LOGO =
+  "https://res.cloudinary.com/dtwrwvffl/image/upload/v1767611236/whiteBgColor2_anh6zf.png";
+
 const AdminSidebar = ({ active }: AdminSidebarProps) => {
   const primaryLinks = [
     { id: "dashboard", label: "Dashboard", icon: "dashboard", to: "/admin" },
@@ -37,11 +40,8 @@ const AdminSidebar = ({ active }: AdminSidebarProps) => {
   return (
     <aside className="flex w-72 flex-col justify-between border-r border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 ease-in-out shrink-0 hidden md:flex">
       <div className="flex flex-col gap-6 p-6">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white">
-            <MaterialIcon className="text-2xl" name="school" />
-          </div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">EduBlog Admin</h1>
+        <div className="flex items-center">
+          <img alt="LearningWeb logo" className="h-16 w-40 object-contain" src={APP_LOGO} />
         </div>
         <nav className="flex flex-col gap-2 mt-4">
           {primaryLinks.map((item) => {
@@ -84,7 +84,8 @@ const AdminSidebar = ({ active }: AdminSidebarProps) => {
       <div className="p-4 border-t border-slate-100 dark:border-slate-800">
         <Link
           className="flex items-center gap-3 rounded-lg px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors"
-          to="/login">
+          search={{ tab: "login" }}
+          to="/auth">
           <MaterialIcon className="text-[20px]" name="logout" />
           <span className="font-medium">Logout</span>
         </Link>

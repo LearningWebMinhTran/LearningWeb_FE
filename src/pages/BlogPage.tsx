@@ -1,11 +1,14 @@
 import UserNavbar from "../components/organisms/UserNavbar";
+import PublicFooter from "../components/organisms/PublicFooter";
+import PageTransition from "../components/layouts/PageTransition";
 import MaterialIcon from "../components/atoms/MaterialIcon";
 
 const BlogPage = () => {
   return (
-    <div className="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans min-h-screen flex flex-col overflow-hidden selection:bg-primary selection:text-white">
+    <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col overflow-hidden antialiased selection:bg-primary selection:text-white">
       <UserNavbar />
-      <div className="flex flex-1 overflow-hidden">
+      <PageTransition className="flex flex-1 flex-col">
+        <div className="flex flex-1 overflow-hidden">
         <aside className="w-64 flex-shrink-0 flex flex-col border-r border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark overflow-y-auto custom-scrollbar">
         <div className="h-16 flex items-center justify-between px-4 border-b border-border-light dark:border-border-dark sticky top-0 bg-surface-light dark:bg-surface-dark z-10">
           <h1 className="font-bold text-lg tracking-tight">Learn AI</h1>
@@ -308,7 +311,9 @@ const BlogPage = () => {
           </div>
         </aside>
         </main>
-      </div>
+        </div>
+        <PublicFooter />
+      </PageTransition>
     </div>
   );
 };

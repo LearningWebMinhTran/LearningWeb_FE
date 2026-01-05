@@ -1,15 +1,17 @@
 import { useRef } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { LogOut } from "lucide-react";
 
 import AccountSectionCard from "../components/organisms/AccountSectionCard";
-import UserNavbar from "../components/organisms/UserNavbar";
+import UserLayout from "../components/layouts/UserLayout";
+import PageTransition from "../components/layouts/PageTransition";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Separator } from "../components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
+import { useAuthActions, useAuthMe } from "../lib/auth";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,10 +27,13 @@ import {
 const AccountPage = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { data: user } = useAuthMe();
+  const { logout } = useAuthActions();
 
   const handleLogout = () => {
+    logout();
     toast.success("Logged out successfully.");
-    navigate({ to: "/login" });
+    navigate({ to: "/auth", search: { tab: "login" } });
   };
 
   const handleUploadClick = () => {
@@ -36,23 +41,13 @@ const AccountPage = () => {
   };
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white min-h-screen flex flex-col font-display">
-      <UserNavbar />
-      <div className="flex flex-1 w-full justify-center py-5 px-4 md:px-6 lg:px-8">
-        <div className="flex flex-col max-w-[1200px] flex-1 w-full">
-          <div className="flex flex-wrap gap-2 px-4 py-2 text-sm text-[#4c669a] dark:text-gray-400">
-            <Link className="hover:text-primary" to="/dashboard">
-              Dashboard
-            </Link>
-            <span>/</span>
-            <span className="text-[#0d121b] dark:text-white">Account Settings</span>
-          </div>
-          <div className="flex flex-col gap-4 px-4 py-6 md:flex-row md:items-start md:justify-between">
-            <div className="flex flex-col gap-3">
-              <h1 className="text-[#0d121b] dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">
-                Account Settings
-              </h1>
-              <p className="text-[#4c669a] dark:text-gray-400 text-base font-normal leading-normal max-w-2xl">
+    <UserLayout activeNav="settings">
+      <PageTransition>
+        <div className="max-w-6xl mx-auto flex flex-col gap-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Account Settings</h1>
+              <p className="text-slate-500 dark:text-slate-400 text-base max-w-2xl">
                 Manage your profile details, update your password, and control your security preferences here.
               </p>
             </div>
@@ -61,7 +56,7 @@ const AccountPage = () => {
               Log Out
             </Button>
           </div>
-          <div className="flex flex-col lg:flex-row gap-8 px-4">
+          <div className="flex flex-col lg:flex-row gap-8">
             <aside className="w-full lg:w-64 flex-shrink-0">
               <nav className="flex flex-col gap-1 sticky top-6">
                 <a className="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg font-medium text-sm transition-colors" href="#profile">
@@ -86,9 +81,13 @@ const AccountPage = () => {
                     <Avatar className="h-24 w-24 ring-4 ring-[#f8f9fc] dark:ring-[#101622]">
                       <AvatarImage
                         alt="Current profile picture showing a person smiling"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBuHSDyQ9Z9RhSu_4zIqhN1jP0Y_csDDSli5PNJDmFH3yExp5JMgueOPnmXEhI4V7eldSx8Gy3xW-w65PxMbfhzZFl4-YABtGOjlKi6-XiVGR8slbXFypSnN7lpZ9wIcvVZXEbxlIoU8uNyDhKejGZH1muzChJ3CmTq2y9f2RDYifSvDVuFh5wRq6qE5OE-Ty85v-oUtY0bPfxVYmVqu4zrFwKOYweMPpxnNJ2H9MfM7G-Ubwp3i1l5Yt_Ov1jUgguiqff17sAyVkn"
+                        src={
+                          typeof user?.avatar === "string"
+                            ? user.avatar
+                            : "https://lh3.googleusercontent.com/aida-public/AB6AXuDBuHSDyQ9Z9RhSu_4zIqhN1jP0Y_csDDSli5PNJDmFH3yExp5JMgueOPnmXEhI4V7eldSx8Gy3xW-w65PxMbfhzZFl4-YABtGOjlKi6-XiVGR8slbXFypSnN7lpZ9wIcvVZXEbxlIoU8uNyDhKejGZH1muzChJ3CmTq2y9f2RDYifSvDVuFh5wRq6qE5OE-Ty85v-oUtY0bPfxVYmVqu4zrFwKOYweMPpxnNJ2H9MfM7G-Ubwp3i1l5Yt_Ov1jUgguiqff17sAyVkn"
+                        }
                       />
-                      <AvatarFallback>AJ</AvatarFallback>
+                      <AvatarFallback>{user?.name?.slice(0, 2) ?? "AJ"}</AvatarFallback>
                     </Avatar>
                   </div>
                   <div className="flex flex-col justify-center text-center sm:text-left">
@@ -116,15 +115,15 @@ const AccountPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-[#0d121b] dark:text-white">Full Name</label>
-                    <Input placeholder="Your full name" defaultValue="Alex Johnson" />
+                    <Input placeholder="Your full name" defaultValue={user?.name ?? "Alex Johnson"} />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-[#0d121b] dark:text-white">Username</label>
-                    <Input placeholder="username" defaultValue="alexj_edu" />
+                    <Input placeholder="username" defaultValue={user?.name ?? "alexj_edu"} />
                   </div>
                   <div className="flex flex-col gap-2 md:col-span-2">
                     <label className="text-sm font-medium text-[#0d121b] dark:text-white">Email Address</label>
-                    <Input disabled type="email" defaultValue="alex.johnson@university.edu" />
+                    <Input disabled type="email" defaultValue={user?.email ?? "alex.johnson@university.edu"} />
                     <p className="text-xs text-[#4c669a] dark:text-gray-500">Contact support to change your email address.</p>
                   </div>
                   <div className="flex flex-col gap-2 md:col-span-2">
@@ -202,8 +201,8 @@ const AccountPage = () => {
             </main>
           </div>
         </div>
-      </div>
-    </div>
+      </PageTransition>
+    </UserLayout>
   );
 };
 

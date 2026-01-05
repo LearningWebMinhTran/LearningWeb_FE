@@ -1,5 +1,6 @@
-import { createRootRoute, createRoute, createRouter, Outlet, useRouterState } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
+import { Link, createRootRoute, createRoute, createRouter, Outlet, redirect } from "@tanstack/react-router";
+
+import { Button } from "./components/ui/button";
 import HomePage from "./pages/HomePage";
 import LibraryPage from "./pages/LibraryPage";
 import AccountPage from "./pages/AccountPage";
@@ -10,41 +11,53 @@ import ContactPage from "./pages/ContactPage";
 import CoursesPage from "./pages/CoursesPage";
 import CommunityPage from "./pages/CommunityPage";
 import DashboardPage from "./pages/DashboardPage";
-import PostDetailPage from "./pages/PostDetailPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import BlogPage from "./pages/BlogPage";
-import BlogBriefPage from "./pages/BlogBriefPage";
-import RegisterPage from "./pages/RegisterPage";
+import PostDetailPage from "./pages/PostDetailPage";
+import UserExplorePage from "./pages/user/UserExplorePage";
+import UserNewFeedPage from "./pages/user/UserNewFeedPage";
+import UserMyPostPage from "./pages/user/UserMyPostPage";
+import UserSavedPostPage from "./pages/user/UserSavedPostPage";
+import UserAnalyticsPage from "./pages/user/UserAnalyticsPage";
+import UserFoldersPage from "./pages/user/UserFoldersPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import AdminManagePostPage from "./pages/admin/AdminManagePostPage";
 import AdminManageUserPage from "./pages/admin/AdminManageUserPage";
 import AdminSettingsPage from "./pages/admin/AdminSettingsPage";
+import { getAuthToken } from "./lib/auth";
 
-const RootLayout = () => {
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
+const requireAuth = (redirectTo: string) => {
+  const token = getAuthToken();
+  if (!token) {
+    throw redirect({
+      to: "/auth",
+      search: { redirect: redirectTo },
+    });
+  }
+};
 
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        className="min-h-screen"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}>
-        <Outlet />
-      </motion.div>
-    </AnimatePresence>
-  );
+const redirectIfAuthenticated = (redirectTo: string) => {
+  const token = getAuthToken();
+  if (token) {
+    throw redirect({
+      to: redirectTo,
+    });
+  }
 };
 
 const rootRoute = createRootRoute({
-  component: RootLayout,
+  component: () => (
+    <div className="min-h-screen">
+      <Outlet />
+    </div>
+  ),
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center bg-background-light text-[#0d121b]">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-2">Page not found</h1>
         <p className="text-sm text-[#4c669a]">The page you are looking for does not exist.</p>
+        <Button asChild className="mt-6">
+          <Link to="/">Back to Home</Link>
+        </Button>
       </div>
     </div>
   ),
@@ -53,6 +66,9 @@ const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
+  beforeLoad: () => {
+    redirectIfAuthenticated("/dashboard");
+  },
   component: HomePage,
 });
 
@@ -62,15 +78,24 @@ const libraryRoute = createRoute({
   component: LibraryPage,
 });
 
+const postDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/library/$slug",
+  component: PostDetailPage,
+});
+
 const accountRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/account",
+  beforeLoad: () => {
+    requireAuth("/account");
+  },
   component: AccountPage,
 });
 
-const loginRoute = createRoute({
+const authRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/login",
+  path: "/auth",
   component: LoginPage,
 });
 
@@ -107,13 +132,64 @@ const communityRoute = createRoute({
 const dashboardRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/dashboard",
+  beforeLoad: () => {
+    requireAuth("/dashboard");
+  },
   component: DashboardPage,
 });
 
-const postDetailRoute = createRoute({
+const dashboardExploreRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/posts/$slug",
-  component: PostDetailPage,
+  path: "/dashboard/explore",
+  beforeLoad: () => {
+    requireAuth("/dashboard/explore");
+  },
+  component: UserExplorePage,
+});
+
+const dashboardNewFeedRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/dashboard/new-feed",
+  beforeLoad: () => {
+    requireAuth("/dashboard/new-feed");
+  },
+  component: UserNewFeedPage,
+});
+
+const dashboardMyPostsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/dashboard/my-posts",
+  beforeLoad: () => {
+    requireAuth("/dashboard/my-posts");
+  },
+  component: UserMyPostPage,
+});
+
+const dashboardFoldersRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/dashboard/folders",
+  beforeLoad: () => {
+    requireAuth("/dashboard/folders");
+  },
+  component: UserFoldersPage,
+});
+
+const dashboardSavedRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/dashboard/saved",
+  beforeLoad: () => {
+    requireAuth("/dashboard/saved");
+  },
+  component: UserSavedPostPage,
+});
+
+const dashboardAnalyticsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/dashboard/analytics",
+  beforeLoad: () => {
+    requireAuth("/dashboard/analytics");
+  },
+  component: UserAnalyticsPage,
 });
 
 const resetPasswordRoute = createRoute({
@@ -122,23 +198,6 @@ const resetPasswordRoute = createRoute({
   component: ResetPasswordPage,
 });
 
-const blogRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/blog/learning",
-  component: BlogPage,
-});
-
-const blogBriefRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/blog",
-  component: BlogBriefPage,
-});
-
-const registerRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/register",
-  component: RegisterPage,
-});
 
 const adminDashboardRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -167,19 +226,22 @@ const adminSettingsRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   indexRoute,
   libraryRoute,
+  postDetailRoute,
   accountRoute,
-  loginRoute,
+  authRoute,
   uploadRoute,
   aboutRoute,
   contactRoute,
   coursesRoute,
   communityRoute,
   dashboardRoute,
-  postDetailRoute,
+  dashboardExploreRoute,
+  dashboardNewFeedRoute,
+  dashboardMyPostsRoute,
+  dashboardFoldersRoute,
+  dashboardSavedRoute,
+  dashboardAnalyticsRoute,
   resetPasswordRoute,
-  blogRoute,
-  blogBriefRoute,
-  registerRoute,
   adminDashboardRoute,
   adminPostsRoute,
   adminUsersRoute,

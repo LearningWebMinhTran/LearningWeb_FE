@@ -1,17 +1,22 @@
-import { useMemo, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { Search, SlidersHorizontal } from "lucide-react";
 
 import LibraryPostCard from "../components/organisms/LibraryPostCard";
+import BlogBriefModal from "../components/organisms/BlogBriefModal";
 import PanelCard from "../components/organisms/PanelCard";
 import UserNavbar from "../components/organisms/UserNavbar";
+import PublicFooter from "../components/organisms/PublicFooter";
+import PageTransition from "../components/layouts/PageTransition";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Badge } from "../components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
-import { getCategories, getTags, posts } from "../data/posts";
+import { type Post } from "../data/posts";
+import { getCategoryCounts, getTagsFromPosts } from "../lib/postUtils";
+import { usePostsData } from "../lib/usePosts";
 
 const sortOptions = [
   { value: "newest", label: "Newest First" },
@@ -25,10 +30,39 @@ const LibraryPage = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [page, setPage] = useState(1);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const pageSize = 3;
+  const searchParams = useRouterState({ select: (state) => state.location.search });
+  const posts = usePostsData();
 
-  const categories = useMemo(() => getCategories(), []);
-  const tags = useMemo(() => getTags(), []);
+  useEffect(() => {
+    if (!isModalOpen && selectedPost) {
+      const timeout = window.setTimeout(() => setSelectedPost(null), 200);
+      return () => window.clearTimeout(timeout);
+    }
+    return undefined;
+  }, [isModalOpen, selectedPost]);
+
+  useEffect(() => {
+    const query = typeof searchParams?.q === "string" ? searchParams.q : "";
+    const category = typeof searchParams?.category === "string" ? searchParams.category : null;
+    const tag = typeof searchParams?.tag === "string" ? searchParams.tag : null;
+
+    if (query !== "") {
+      setSearch(query);
+    }
+    if (searchParams?.q === undefined) {
+      setSearch("");
+    }
+
+    setActiveCategory(category);
+    setActiveTag(tag);
+    setPage(1);
+  }, [searchParams?.category, searchParams?.q, searchParams?.tag]);
+
+  const categories = useMemo(() => getCategoryCounts(posts), [posts]);
+  const tags = useMemo(() => getTagsFromPosts(posts), [posts]);
 
   const filteredPosts = useMemo(() => {
     const normalized = search.trim().toLowerCase();
@@ -69,9 +103,10 @@ const LibraryPage = () => {
   };
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white overflow-x-hidden">
+    <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-x-hidden min-h-screen font-display antialiased">
       <UserNavbar />
-      <div className="layout-container flex flex-col min-h-screen">
+      <PageTransition>
+        <div className="layout-container flex flex-col min-h-screen">
         <div className="w-full bg-white dark:bg-[#1a202c] border-b border-[#e7ebf3] dark:border-[#22303c]">
           <div className="px-4 md:px-10 py-10 max-w-[1280px] mx-auto">
             <div className="flex flex-col gap-4">
@@ -80,13 +115,13 @@ const LibraryPage = () => {
                   Home
                 </Link>
                 <span className="text-xs">/</span>
-                <span className="text-[#0d121b] dark:text-gray-200 font-medium">Blog</span>
+                <span className="text-[#0d121b] dark:text-gray-200 font-medium">Library</span>
               </div>
               <div className="flex flex-col gap-2">
-                <h1 className="text-[#0d121b] dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
                   Explore Our Library
                 </h1>
-                <p className="text-[#4c669a] dark:text-gray-400 text-lg font-normal max-w-2xl">
+                <p className="text-slate-500 dark:text-slate-400 text-lg font-normal max-w-2xl">
                   Discover tutorials, guides, and insights to level up your development skills. New content added weekly.
                 </p>
               </div>
@@ -159,10 +194,13 @@ const LibraryPage = () => {
                   categoryClassName={post.categoryBadgeClass}
                   dateLabel={post.dateLabel}
                   excerpt={post.excerpt}
-                  href={`/posts/${post.slug}`}
                   imageAlt={post.imageAlt}
                   imageUrl={post.imageUrl}
                   onAddToFolder={() => handleAddToFolder(post.title)}
+                  onSelect={() => {
+                    setSelectedPost(post);
+                    setIsModalOpen(true);
+                  }}
                   readTime={post.readTime}
                   title={post.title}
                 />
@@ -306,23 +344,10 @@ const LibraryPage = () => {
             </aside>
           </div>
         </div>
-        <footer className="bg-white dark:bg-[#1a202c] border-t border-[#e7ebf3] dark:border-[#22303c] mt-auto">
-          <div className="px-4 md:px-10 py-10 max-w-[1280px] mx-auto flex flex-col gap-6 text-center">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-[#4c669a] dark:text-gray-400">
-              <Link className="hover:text-primary transition-colors" to="/about">
-                About Us
-              </Link>
-              <Link className="hover:text-primary transition-colors" to="/contact">
-                Contact
-              </Link>
-              <Link className="hover:text-primary transition-colors" to="/community">
-                Community
-              </Link>
-            </div>
-            <p className="text-[#4c669a] dark:text-gray-400 text-sm font-normal">c 2023 EduBlog. All rights reserved.</p>
-          </div>
-        </footer>
-      </div>
+        <PublicFooter />
+        <BlogBriefModal onOpenChange={setIsModalOpen} open={isModalOpen} post={selectedPost} />
+        </div>
+      </PageTransition>
     </div>
   );
 };

@@ -3,22 +3,25 @@ import { toast } from "sonner";
 
 import MaterialIcon from "../components/atoms/MaterialIcon";
 import UserNavbar from "../components/organisms/UserNavbar";
+import PublicFooter from "../components/organisms/PublicFooter";
+import PageTransition from "../components/layouts/PageTransition";
 
 const ContactPage = () => {
   return (
-    <div className="bg-background-light dark:bg-background-dark text-[#0d141b] dark:text-white min-h-screen flex flex-col font-display">
+    <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-display antialiased">
       <UserNavbar />
 
-      <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <section className="mb-12">
-          <h1 className="text-[#0d141b] dark:text-white text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-[#4c739a] dark:text-gray-400 text-lg font-normal max-w-2xl">
-            Have a question about a course or want to contribute to the blog? We'd love to hear from you. Fill out the
-            form below or reach out via email.
-          </p>
-        </section>
+      <PageTransition className="flex-grow flex flex-col">
+        <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+          <section className="mb-12">
+            <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight mb-4">
+              Get in Touch
+            </h1>
+            <p className="text-slate-500 dark:text-slate-400 text-lg font-normal max-w-2xl">
+              Have a question about a course or want to contribute to the blog? We'd love to hear from you. Fill out the
+              form below or reach out via email.
+            </p>
+          </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 flex flex-col gap-8">
@@ -151,7 +154,7 @@ const ContactPage = () => {
                 </label>
                 <div className="pt-2">
                   <button
-                    className="group w-full sm:w-auto min-w-[160px] h-12 bg-primary hover:bg-[#0f6bca] text-white text-base font-bold rounded-xl transition-all shadow-md shadow-primary/30 flex items-center justify-center gap-2"
+                    className="group w-full sm:w-auto min-w-[160px] h-12 bg-primary hover:bg-primary-dark text-white text-base font-bold rounded-xl transition-all shadow-md shadow-primary/30 flex items-center justify-center gap-2"
                     type="submit">
                     <span>Send Message</span>
                     <MaterialIcon className="text-[20px] group-hover:translate-x-1 transition-transform" name="send" />
@@ -161,7 +164,9 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
-      </main>
+        </main>
+        <PublicFooter />
+      </PageTransition>
     </div>
   );
 };

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Saved Posts - EduBlog</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0881a3",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              blue: {
+                50: "#e9f7fa",
+                100: "#d1eef4",
+                200: "#a8dde8",
+                300: "#77cadd",
+                400: "#3fb4cc",
+                500: "#0881a3",
+                600: "#077292",
+                700: "#055d75",
+                800: "#04485d",
+                900: "#033544",
+              },
+            },
+            fontFamily: {
+              display: ["Lexend", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Lexend", sans-serif;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-y-hidden overflow-x-visible">
+    <div class="flex h-screen w-full overflow-x-visible">
+      <aside
+        class="w-64 flex-shrink-0 bg-white dark:bg-[#1a2234] border-r border-slate-200 dark:border-slate-800 flex flex-col h-full hidden md:flex relative overflow-visible">
+        <button
+          class="absolute left-0 -translate-x-1/2 top-8 h-6 px-3 rounded-r-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#202a3c] text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center shadow-sm z-20"
+          type="button">
+          <span class="material-symbols-outlined text-base">chevron_left</span>
+        </button>
+        <div
+          class="p-6 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800">
+          <div
+            class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+            <span class="material-symbols-outlined text-xl">school</span>
+          </div>
+          <h2
+            class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+            EduBlog
+          </h2>
+        </div>
+        <div class="flex-1 overflow-y-auto py-6 px-4 flex flex-col gap-6">
+          <div class="flex items-center gap-3 px-2">
+            <div
+              class="bg-center bg-no-repeat bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700"
+              data-alt="User profile picture of a young student smiling"
+              style="
+                background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAqEV6q1VMv3zrMYv01xJhp6n8dYMQ5Xu6ngf0_aIC_YBVxLwQzEbXyUt4irJwixib4VJOoCKtzaZfrMS4CvtaxbZZG-FL-fTzx0FXB5D1aJcwS8_tERzQkrrO4H1qLsSlJ0qdKbtn9_UXMykOyc5AaeB9vh6EVt7MySZcr9A3Io27xYMCsHOaNRY-fYTU2Km7oXVUjTiqIdyPx2jHOV_DyMkIjK9nua-gtau4pg4fYkyRkPkIrYrrbbbKDVd1O4kMy9tXpuecq4G7Y');
+              "></div>
+            <div class="flex flex-col overflow-hidden">
+              <h1
+                class="text-slate-900 dark:text-white text-sm font-semibold truncate">
+                Alex Learner
+              </h1>
+              <p class="text-slate-500 dark:text-slate-400 text-xs truncate">
+                Student Account
+              </p>
+            </div>
+          </div>
+          <nav class="flex flex-col gap-1">
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">dashboard</span>
+              <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">search</span>
+              <span class="text-sm font-medium">Search</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">feed</span>
+              <span class="text-sm font-medium">NewFeed</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">article</span>
+              <span class="text-sm font-medium">My Posts</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">folder_open</span>
+              <span class="text-sm font-medium">My Folders</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:text-primary dark:bg-primary/20 transition-colors"
+              href="#">
+              <span class="material-symbols-outlined fill-1">bookmarks</span>
+              <span class="text-sm font-medium">Saved Posts</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">settings</span>
+              <span class="text-sm font-medium">Settings</span>
+            </a>
+          </nav>
+          <div class="mt-auto">
+            <div
+              class="bg-primary/5 dark:bg-primary/10 rounded-xl p-4 flex flex-col gap-2 items-start">
+              <span class="material-symbols-outlined text-primary text-2xl"
+                >emoji_events</span
+              >
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                Weekly Goal
+              </p>
+              <div
+                class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                <div
+                  class="bg-primary h-1.5 rounded-full"
+                  style="width: 75%"></div>
+              </div>
+              <p class="text-xs text-slate-700 dark:text-slate-300 font-bold">
+                3/4 Badges Earned
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="flex-1 flex flex-col h-full min-w-0">
+        <header
+          class="h-16 flex items-center justify-between px-6 bg-white dark:bg-[#1a2234] border-b border-slate-200 dark:border-slate-800 shrink-0 z-10">
+          <button class="md:hidden p-2 text-slate-600 dark:text-slate-300">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+          <div class="flex items-center gap-4 flex-1 max-w-xl mx-auto md:mx-0">
+            <div class="relative w-full max-w-md hidden md:block">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                >search</span
+              >
+              <input
+                class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary/50"
+                placeholder="Search for courses, articles, or tags..."
+                type="text" />
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <button
+              class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-all shadow-sm shadow-primary/30">
+              <span class="material-symbols-outlined text-lg">add</span>
+              <span class="hidden sm:inline">New Post</span>
+            </button>
+            <button
+              class="relative p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+              <span class="material-symbols-outlined">notifications</span>
+              <span
+                class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white dark:border-[#1a2234]"></span>
+            </button>
+          </div>
+        </header>
+        <main class="flex-1 overflow-y-auto p-6 md:p-8 relative">
+          <div class="max-w-[1000px] mx-auto flex flex-col gap-8">
+            <div class="flex flex-col gap-2">
+              <h1
+                class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+                Saved Posts
+              </h1>
+              <p class="text-slate-500 dark:text-slate-400 text-base">
+                Your personal collection of articles to read later or reference.
+              </p>
+            </div>
+            <div
+              class="bg-white dark:bg-[#1a2234] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex flex-col lg:flex-row gap-4 justify-between">
+                <div class="relative flex-1 max-w-lg">
+                  <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                    >search</span
+                  >
+                  <input
+                    class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    placeholder="Search in saved posts..."
+                    type="text" />
+                </div>
+                <div class="flex flex-wrap items-center gap-3">
+                  <select
+                    class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5 min-w-[140px]">
+                    <option selected="">All Categories</option>
+                    <option value="dev">Development</option>
+                    <option value="design">Design</option>
+                    <option value="data">Data Science</option>
+                  </select>
+                  <select
+                    class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5 min-w-[140px]">
+                    <option selected="">Any Author</option>
+                    <option value="1">Following</option>
+                    <option value="2">Popular</option>
+                  </select>
+                  <select
+                    class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5 min-w-[140px]">
+                    <option selected="">Date Saved (Newest)</option>
+                    <option value="oldest">Date Saved (Oldest)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div
+                class="bg-white dark:bg-[#1a2234] p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6">
+                <div
+                  class="w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg bg-cover bg-center"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBp6FiMHdIiZqlOVOXIngTsu9dF2lqGX78j_4nrA1WFsDcjjRGEMKdB_xFQ95tRlktAtMTsrsGPlousKtBVb4wkGgo6g0k2cYAyfuFF4RWlGUp7eBP2Dh7pUKquZvKR5_I98mlS16Z4ztNJ8Ij3vz7Ysg0d02QERCC-zPaU1UaxqP7k7DRgP4x1x_gMEcVsKHGGaXi0fMRNWAyVHzYmtkWnrlU7qDFLz_VT5VCqmfFXvgKdWh7Rl_msR36Wx6lpELFn4fBNfGjcEsXr');
+                  "></div>
+                <div class="flex flex-col flex-1 justify-between py-1">
+                  <div>
+                    <div class="flex items-center gap-3 mb-2">
+                      <span
+                        class="bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide"
+                        >React</span
+                      >
+                      <span
+                        class="text-slate-400 text-xs flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]"
+                          >calendar_today</span
+                        >
+                        Saved 2 hours ago
+                      </span>
+                    </div>
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-white leading-tight mb-2 hover:text-primary transition-colors cursor-pointer">
+                      Advanced State Management Patterns in 2024
+                    </h3>
+                    <p
+                      class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                      Explore the latest techniques for handling complex state
+                      logic in React applications, including new hooks, context
+                      optimization, and third-party library comparisons.
+                    </p>
+                    <p class="text-xs font-medium text-slate-500 mt-2">
+                      By
+                      <span class="text-slate-700 dark:text-slate-300"
+                        >Sarah Jenkins</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="mt-5 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/50 pt-4">
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-5 rounded-lg transition-colors flex items-center gap-2">
+                      <span>Read Now</span>
+                      <span class="material-symbols-outlined text-base"
+                        >arrow_forward</span
+                      >
+                    </button>
+                    <button
+                      class="text-slate-400 hover:text-red-500 flex items-center gap-1.5 text-sm font-medium transition-colors px-2 py-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20 group"
+                      title="Remove from Saved">
+                      <span
+                        class="material-symbols-outlined fill-1 group-hover:scale-110 transition-transform"
+                        >bookmark_remove</span
+                      >
+                      <span class="hidden sm:inline">Unsave</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-[#1a2234] p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6">
+                <div
+                  class="w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg bg-cover bg-center"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzn0Yg4uMmd9SmlvGFoqpI_4AH9DMn3X-cVHWyerM1hNyZWIM4wlkqxDSS0SXu2f4TnKafWHdrK1Dj3VpIJLOQP1RtDKyIGDbO0UuNJIFctGMtY4cQMFhEu33j_mxaMT1gfH9UDna4njSWKLfjynrY-hwADimwzNLgYcFrR9hOpYxpP8BbpLapzeIK6xzabW_IUh6juNey-w-7budGeJ3RCW2-vKcLU4eynrc6q4KmlQuWPbCGrjCUJozW_wl-pCs4KkN4V5FgcULQ');
+                  "></div>
+                <div class="flex flex-col flex-1 justify-between py-1">
+                  <div>
+                    <div class="flex items-center gap-3 mb-2">
+                      <span
+                        class="bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide"
+                        >Design</span
+                      >
+                      <span
+                        class="text-slate-400 text-xs flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]"
+                          >calendar_today</span
+                        >
+                        Saved yesterday
+                      </span>
+                    </div>
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-white leading-tight mb-2 hover:text-primary transition-colors cursor-pointer">
+                      Principles of User Interface Design: A Comprehensive Guide
+                    </h3>
+                    <p
+                      class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                      Master the fundamental rules of UI design. Learn about
+                      hierarchy, spacing, typography, and color theory to create
+                      intuitive and beautiful interfaces.
+                    </p>
+                    <p class="text-xs font-medium text-slate-500 mt-2">
+                      By
+                      <span class="text-slate-700 dark:text-slate-300"
+                        >Marc Alen</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="mt-5 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/50 pt-4">
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-5 rounded-lg transition-colors flex items-center gap-2">
+                      <span>Read Now</span>
+                      <span class="material-symbols-outlined text-base"
+                        >arrow_forward</span
+                      >
+                    </button>
+                    <button
+                      class="text-slate-400 hover:text-red-500 flex items-center gap-1.5 text-sm font-medium transition-colors px-2 py-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20 group"
+                      title="Remove from Saved">
+                      <span
+                        class="material-symbols-outlined fill-1 group-hover:scale-110 transition-transform"
+                        >bookmark_remove</span
+                      >
+                      <span class="hidden sm:inline">Unsave</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-[#1a2234] p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6">
+                <div
+                  class="w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg bg-cover bg-center"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmng-DSXrNWrkjZnLXtfcHmdn2pG0159L0mCdWgft3Id2AxZp6ADUoLjoh1MtN72ne2Y9F9v5cO1SkNki0EJxwuLpaOFHJOhDyQ-nx4R0PMBi30HxA1CrFOSN_TtTqHTYVa2TMFnaXcGBUbE1tBqq4w3-uYThaKWjEg9hIDLN6ua2uAZI59bNaUWcvW0LE5vSJjsU0lX0ac2pkEhQQfjKIZfS6CJcMwFfEcKe62kTAFg83BxViUmpfltD7pnQLjEvExdSEvNHy6K1p');
+                  "></div>
+                <div class="flex flex-col flex-1 justify-between py-1">
+                  <div>
+                    <div class="flex items-center gap-3 mb-2">
+                      <span
+                        class="bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide"
+                        >Python</span
+                      >
+                      <span
+                        class="text-slate-400 text-xs flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]"
+                          >calendar_today</span
+                        >
+                        Saved 3 days ago
+                      </span>
+                    </div>
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-white leading-tight mb-2 hover:text-primary transition-colors cursor-pointer">
+                      Mastering Python Decorators
+                    </h3>
+                    <p
+                      class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                      A deep dive into one of Python's most powerful features.
+                      Understand how decorators work under the hood and how to
+                      implement them in real-world scenarios.
+                    </p>
+                    <p class="text-xs font-medium text-slate-500 mt-2">
+                      By
+                      <span class="text-slate-700 dark:text-slate-300"
+                        >Elena Code</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="mt-5 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/50 pt-4">
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-5 rounded-lg transition-colors flex items-center gap-2">
+                      <span>Read Now</span>
+                      <span class="material-symbols-outlined text-base"
+                        >arrow_forward</span
+                      >
+                    </button>
+                    <button
+                      class="text-slate-400 hover:text-red-500 flex items-center gap-1.5 text-sm font-medium transition-colors px-2 py-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20 group"
+                      title="Remove from Saved">
+                      <span
+                        class="material-symbols-outlined fill-1 group-hover:scale-110 transition-transform"
+                        >bookmark_remove</span
+                      >
+                      <span class="hidden sm:inline">Unsave</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-[#1a2234] p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6">
+                <div
+                  class="w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg bg-cover bg-center"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA3lTaKDQU9d_uUV0IzgMHg32pCt4B_eUg2fficyQzRtk3bBO30r36Hq6SrC96v4G3nyUPXsWZj7qaz91zvlxRBxWg_Ds-gxwoPQOLi10P7R09V45cOrZJIY6RVdt30hjCjnvdMLAnsZghZ9CNuUhdRRbbvqL-gIud1Ih_0n_MaxUMCBBKx2iWZ8ptcFjUR-taW2Ff7GLzgU_R2qffl62U_x_HXj5QvKEUS0G7hHG3T4bwOH9jnomnXWEc34th38VQenh4fXt4WXgI4');
+                  "></div>
+                <div class="flex flex-col flex-1 justify-between py-1">
+                  <div>
+                    <div class="flex items-center gap-3 mb-2">
+                      <span
+                        class="bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide"
+                        >AI &amp; ML</span
+                      >
+                      <span
+                        class="text-slate-400 text-xs flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]"
+                          >calendar_today</span
+                        >
+                        Saved last week
+                      </span>
+                    </div>
+                    <h3
+                      class="text-xl font-bold text-slate-900 dark:text-white leading-tight mb-2 hover:text-primary transition-colors cursor-pointer">
+                      Understanding Neural Networks: From Basics to Deep
+                      Learning
+                    </h3>
+                    <p
+                      class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                      Demystifying the concept of neural networks. This article
+                      breaks down the mathematics and logic behind AI models in
+                      simple, understandable terms.
+                    </p>
+                    <p class="text-xs font-medium text-slate-500 mt-2">
+                      By
+                      <span class="text-slate-700 dark:text-slate-300"
+                        >David Data</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="mt-5 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/50 pt-4">
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-5 rounded-lg transition-colors flex items-center gap-2">
+                      <span>Read Now</span>
+                      <span class="material-symbols-outlined text-base"
+                        >arrow_forward</span
+                      >
+                    </button>
+                    <button
+                      class="text-slate-400 hover:text-red-500 flex items-center gap-1.5 text-sm font-medium transition-colors px-2 py-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20 group"
+                      title="Remove from Saved">
+                      <span
+                        class="material-symbols-outlined fill-1 group-hover:scale-110 transition-transform"
+                        >bookmark_remove</span
+                      >
+                      <span class="hidden sm:inline">Unsave</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="hidden flex flex-col items-center justify-center py-20 text-center">
+              <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-full mb-4">
+                <span class="material-symbols-outlined text-4xl text-slate-400"
+                  >bookmarks</span
+                >
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                No saved posts yet
+              </h3>
+              <p class="text-slate-500 dark:text-slate-400 max-w-sm mt-2">
+                When you find something interesting, tap the bookmark icon to
+                save it here for later.
+              </p>
+              <button class="mt-6 text-primary font-medium hover:underline">
+                Explore NewFeed
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
