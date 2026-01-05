@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EduBlog Admin - Manage Users</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet" />
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/20 selection:text-primary">
+    <div class="flex h-screen w-full overflow-hidden">
+      <aside
+        class="flex w-72 flex-col justify-between border-r border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 ease-in-out shrink-0 hidden md:flex">
+        <div class="flex flex-col gap-6 p-6">
+          <div class="flex items-center gap-3">
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white">
+              <span class="material-symbols-outlined text-2xl">school</span>
+            </div>
+            <h1
+              class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+              EduBlog Admin
+            </h1>
+          </div>
+          <nav class="flex flex-col gap-2 mt-4">
+            <a
+              class="group flex items-center gap-3 rounded-lg px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">dashboard</span>
+              <span class="font-medium">Dashboard</span>
+            </a>
+            <div
+              class="my-2 border-t border-slate-100 dark:border-slate-800"></div>
+            <p
+              class="px-4 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Content
+            </p>
+            <a
+              class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">edit_square</span>
+              <span class="font-medium">Create Post</span>
+            </a>
+            <a
+              class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">article</span>
+              <span class="font-medium">Manage Posts</span>
+            </a>
+            <div
+              class="my-2 border-t border-slate-100 dark:border-slate-800"></div>
+            <p
+              class="px-4 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Administration
+            </p>
+            <a
+              class="group flex items-center gap-3 rounded-lg bg-primary/10 px-4 py-2.5 text-primary transition-colors"
+              href="#">
+              <span class="material-symbols-outlined fill-1">group</span>
+              <span class="font-medium">Manage Users</span>
+            </a>
+            <a
+              class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+              href="#">
+              <span class="material-symbols-outlined">settings</span>
+              <span class="font-medium">Settings</span>
+            </a>
+          </nav>
+        </div>
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800">
+          <a
+            class="flex items-center gap-3 rounded-lg px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors"
+            href="#">
+            <span class="material-symbols-outlined">logout</span>
+            <span class="font-medium">Logout</span>
+          </a>
+        </div>
+      </aside>
+      <main
+        class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark relative">
+        <header
+          class="h-20 shrink-0 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-10 flex items-center justify-between z-10">
+          <button
+            class="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+          <div class="hidden md:flex flex-1 max-w-lg">
+            <div class="relative w-full group">
+              <span
+                class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors material-symbols-outlined"
+                >search</span
+              >
+              <input
+                class="w-full bg-slate-100 dark:bg-slate-800 border-transparent focus:border-primary focus:ring-0 rounded-lg pl-10 pr-4 py-2.5 text-sm transition-all outline-none text-slate-900 dark:text-white placeholder-slate-400"
+                placeholder="Search global..."
+                type="text" />
+            </div>
+          </div>
+          <div class="flex items-center gap-4 md:gap-6 ml-auto">
+            <button
+              class="relative p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+              <span class="material-symbols-outlined">notifications</span>
+              <span
+                class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+            </button>
+            <div
+              class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-700">
+              <div class="text-right hidden sm:block">
+                <p
+                  class="text-sm font-semibold text-slate-900 dark:text-white leading-tight">
+                  Jane Doe
+                </p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                  Administrator
+                </p>
+              </div>
+              <div
+                class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden ring-2 ring-white dark:ring-slate-800 shadow-sm"
+                data-alt="Admin User Profile Picture">
+                <img
+                  alt="Profile"
+                  class="h-full w-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFQA-fabmgA95keIG9Wfr1yHwV2XIkF60G-0XirxkD1mu6JcKEh_oNYUQB6hlDglW44Z4pI4g1rmL9qHEIS0K2ihcPS1CD5tTugL43PDn48H-DZEHTdwAcBn82g2Oh8KwoON_AHJ8r25J9CL6gsa-uku9GsMXWfiASX0ZYz7pDDEmgobTSfbQjM38gKb6gHgkVNgmEHqFaUwV5UQnRZTo1RI7QUBaal9P78YolomEkXTZd6bS8rUKkewZ_HdAkNtpW4-IHx59vak3A" />
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="flex-1 overflow-y-auto p-6 md:p-10 scroll-smooth">
+          <div class="mx-auto max-w-7xl flex flex-col gap-8">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+                  Manage Users
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-1">
+                  View, edit, and manage user access and permissions.
+                </p>
+              </div>
+              <button
+                class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg font-medium shadow-sm shadow-primary/30 transition-all active:scale-95">
+                <span class="material-symbols-outlined text-[20px]"
+                  >person_add</span
+                >
+                <span>Add New User</span>
+              </button>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col md:flex-row gap-4 items-center justify-between">
+              <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <div class="relative w-full sm:w-72">
+                  <span
+                    class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-[20px]"
+                    >search</span
+                  >
+                  <input
+                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-primary/20 rounded-lg pl-10 pr-4 py-2 text-sm transition-all outline-none text-slate-900 dark:text-white placeholder-slate-400"
+                    placeholder="Find by name or email..."
+                    type="text" />
+                </div>
+                <div class="relative w-full sm:w-48">
+                  <select
+                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-lg focus:ring-primary/20 focus:border-primary block p-2.5">
+                    <option selected="">All Roles</option>
+                    <option value="admin">Administrator</option>
+                    <option value="editor">Editor</option>
+                    <option value="student">Student</option>
+                  </select>
+                </div>
+              </div>
+              <div class="flex gap-2 w-full md:w-auto justify-end">
+                <button
+                  class="px-3 py-2 text-sm font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[18px]"
+                    >filter_list</span
+                  >
+                  Filter
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[18px]"
+                    >download</span
+                  >
+                  Export CSV
+                </button>
+              </div>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col h-full">
+              <div class="overflow-x-auto">
+                <table
+                  class="w-full text-left text-sm text-slate-600 dark:text-slate-400">
+                  <thead
+                    class="bg-slate-50 dark:bg-slate-900/50 text-xs uppercase font-semibold text-slate-500 dark:text-slate-400">
+                    <tr>
+                      <th class="px-6 py-4 w-12">
+                        <input
+                          class="rounded border-slate-300 text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 dark:border-slate-600"
+                          type="checkbox" />
+                      </th>
+                      <th class="px-6 py-4">User</th>
+                      <th class="px-6 py-4">Email Address</th>
+                      <th class="px-6 py-4">Role</th>
+                      <th class="px-6 py-4">Registration Date</th>
+                      <th class="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="divide-y divide-slate-100 dark:divide-slate-700">
+                    <tr
+                      class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+                      <td class="px-6 py-4">
+                        <input
+                          class="rounded border-slate-300 text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 dark:border-slate-600"
+                          type="checkbox" />
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="h-9 w-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs ring-2 ring-white dark:ring-slate-800">
+                            JD
+                          </div>
+                          <div>
+                            <p
+                              class="font-medium text-slate-900 dark:text-white">
+                              Jane Doe
+                            </p>
+                            <p class="text-xs text-slate-500">@janedoe</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">jane.doe@edublog.com</td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 border border-purple-200 dark:border-purple-800">
+                          Administrator
+                        </span>
+                      </td>
+                      <td class="px-6 py-4">Jan 12, 2023</td>
+                      <td class="px-6 py-4 text-right">
+                        <div
+                          class="flex items-center justify-end gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded transition-colors"
+                            title="Edit Profile">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >edit</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded transition-colors"
+                            title="Change Role">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >admin_panel_settings</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
+                            title="Delete User">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >delete</span
+                            >
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+                      <td class="px-6 py-4">
+                        <input
+                          class="rounded border-slate-300 text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 dark:border-slate-600"
+                          type="checkbox" />
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                          <img
+                            alt="David Chen"
+                            class="h-9 w-9 rounded-full object-cover ring-2 ring-white dark:ring-slate-800"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN_ORDb00PevrxJET3EkG2efKPIohzX9wTyUhE8pL_PMxavCcKntvb9exG9XGblz-slfUYSX-4mWFqmm7DwmxhsGlp2rF9Nawt0RBtrOxgCsgkZH_3LPRf3tTkx0mdKHUUPPSbTJMGrKGwWhUuM03pagtC7pbrbZR1fD-9KNvIqdPNymrj_xPxwzprmLSss7-zbWEsnmHmmbbUDEROax5y5ynm4WvWrsDybd_OFficj1f1vRLqMFSK3vnZhZ_f5V3EXx7JtD2n8I6Y" />
+                          <div>
+                            <p
+                              class="font-medium text-slate-900 dark:text-white">
+                              David Chen
+                            </p>
+                            <p class="text-xs text-slate-500">@davidc_code</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">david.chen@example.com</td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
+                          Editor
+                        </span>
+                      </td>
+                      <td class="px-6 py-4">Mar 04, 2023</td>
+                      <td class="px-6 py-4 text-right">
+                        <div
+                          class="flex items-center justify-end gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded transition-colors"
+                            title="Edit Profile">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >edit</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded transition-colors"
+                            title="Change Role">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >admin_panel_settings</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
+                            title="Delete User">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >delete</span
+                            >
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+                      <td class="px-6 py-4">
+                        <input
+                          class="rounded border-slate-300 text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 dark:border-slate-600"
+                          type="checkbox" />
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="h-9 w-9 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs ring-2 ring-white dark:ring-slate-800">
+                            AS
+                          </div>
+                          <div>
+                            <p
+                              class="font-medium text-slate-900 dark:text-white">
+                              Anna Smith
+                            </p>
+                            <p class="text-xs text-slate-500">@annasmith99</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">anna.smith@university.edu</td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                          Student
+                        </span>
+                      </td>
+                      <td class="px-6 py-4">Jun 15, 2023</td>
+                      <td class="px-6 py-4 text-right">
+                        <div
+                          class="flex items-center justify-end gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded transition-colors"
+                            title="Edit Profile">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >edit</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded transition-colors"
+                            title="Change Role">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >admin_panel_settings</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
+                            title="Delete User">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >delete</span
+                            >
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+                      <td class="px-6 py-4">
+                        <input
+                          class="rounded border-slate-300 text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 dark:border-slate-600"
+                          type="checkbox" />
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="h-9 w-9 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs ring-2 ring-white dark:ring-slate-800">
+                            MK
+                          </div>
+                          <div>
+                            <p
+                              class="font-medium text-slate-900 dark:text-white">
+                              Marcus King
+                            </p>
+                            <p class="text-xs text-slate-500">@king_marcus</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">marcus.king@webmail.com</td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                          Student
+                        </span>
+                      </td>
+                      <td class="px-6 py-4">Aug 22, 2023</td>
+                      <td class="px-6 py-4 text-right">
+                        <div
+                          class="flex items-center justify-end gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded transition-colors"
+                            title="Edit Profile">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >edit</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded transition-colors"
+                            title="Change Role">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >admin_panel_settings</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
+                            title="Delete User">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >delete</span
+                            >
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+                      <td class="px-6 py-4">
+                        <input
+                          class="rounded border-slate-300 text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 dark:border-slate-600"
+                          type="checkbox" />
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="h-9 w-9 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold text-xs ring-2 ring-white dark:ring-slate-800">
+                            JL
+                          </div>
+                          <div>
+                            <p
+                              class="font-medium text-slate-900 dark:text-white">
+                              Jessica Lee
+                            </p>
+                            <p class="text-xs text-slate-500">@jessylee</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">jessica.lee@design.net</td>
+                      <td class="px-6 py-4">
+                        <span
+                          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
+                          Editor
+                        </span>
+                      </td>
+                      <td class="px-6 py-4">Oct 05, 2023</td>
+                      <td class="px-6 py-4 text-right">
+                        <div
+                          class="flex items-center justify-end gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded transition-colors"
+                            title="Edit Profile">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >edit</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded transition-colors"
+                            title="Change Role">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >admin_panel_settings</span
+                            >
+                          </button>
+                          <button
+                            class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
+                            title="Delete User">
+                            <span class="material-symbols-outlined text-[18px]"
+                              >delete</span
+                            >
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div
+                class="p-4 border-t border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex flex-col sm:flex-row items-center justify-between gap-4 mt-auto">
+                <span class="text-sm text-slate-500 dark:text-slate-400">
+                  Showing
+                  <span class="font-semibold text-slate-900 dark:text-white"
+                    >1</span
+                  >
+                  to
+                  <span class="font-semibold text-slate-900 dark:text-white"
+                    >5</span
+                  >
+                  of
+                  <span class="font-semibold text-slate-900 dark:text-white"
+                    >48</span
+                  >
+                  users
+                </span>
+                <div class="inline-flex -space-x-px rounded-md shadow-sm">
+                  <button
+                    class="px-3 py-2 text-sm font-medium text-slate-500 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-l-lg hover:bg-slate-100 dark:hover:bg-slate-700">
+                    Previous
+                  </button>
+                  <button
+                    class="px-3 py-2 text-sm font-medium text-white bg-primary border border-primary hover:bg-primary-dark">
+                    1
+                  </button>
+                  <button
+                    class="px-3 py-2 text-sm font-medium text-slate-500 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    2
+                  </button>
+                  <button
+                    class="px-3 py-2 text-sm font-medium text-slate-500 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700">
+                    3
+                  </button>
+                  <button
+                    class="px-3 py-2 text-sm font-medium text-slate-500 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-r-lg hover:bg-slate-100 dark:hover:bg-slate-700">
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
+
+

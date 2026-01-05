@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us - EduBlog</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <!-- Theme Configuration -->
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden transition-colors duration-300">
+    <div class="relative flex flex-col min-h-screen w-full">
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div
+          class="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1280px] mx-auto w-full">
+          <div class="flex items-center gap-8">
+            <a
+              class="flex items-center gap-4 text-slate-900 dark:text-white group"
+              href="#">
+              <div
+                class="size-8 text-primary transition-transform group-hover:scale-110">
+                <svg
+                  fill="currentColor"
+                  viewbox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    clip-rule="evenodd"
+                    d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                    fill-rule="evenodd"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-bold leading-tight tracking-tight">
+                EduBlog
+              </h2>
+            </a>
+            <div class="hidden md:flex items-center gap-9">
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors"
+                href="#"
+                >Home</a
+              >
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors"
+                href="#"
+                >Blog</a
+              >
+              <a
+                class="text-primary text-sm font-medium leading-normal"
+                href="#"
+                >About Us</a
+              >
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors"
+                href="#"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+              <div
+                class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-slate-200 dark:border-slate-700 focus-within:border-primary transition-colors">
+                <div
+                  class="text-slate-400 bg-slate-100 dark:bg-slate-800 flex items-center justify-center pl-4">
+                  <span class="material-symbols-outlined text-[20px]"
+                    >search</span
+                  >
+                </div>
+                <input
+                  class="flex w-full min-w-0 flex-1 resize-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 px-4 pl-2 text-sm font-normal leading-normal focus:outline-none"
+                  placeholder="Search topics..." />
+              </div>
+            </label>
+            <button class="md:hidden text-slate-900 dark:text-white">
+              <span class="material-symbols-outlined">menu</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <!-- Main Content Wrapper -->
+      <main class="flex flex-col items-center justify-center w-full flex-1">
+        <div
+          class="layout-content-container flex flex-col max-w-[960px] w-full px-4 md:px-6">
+          <!-- Hero Section -->
+          <section class="@container py-8 md:py-16">
+            <div
+              class="flex flex-col gap-8 px-0 md:px-4 py-6 @[864px]:flex-row items-center">
+              <div
+                class="w-full @[864px]:w-1/2 aspect-video rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden shadow-sm relative group">
+                <div
+                  class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+                <div
+                  class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  data-alt="Group of diverse students studying together around a table with laptops"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCeJVX91zoZPr0yeYn7nlx5rRfZXqXOO7A8O2xAnlnhKZFnESAoNK9fqnnRNu5i1YNvR13nAv0BmYfTVJ2R63UYTDE290wTBnQWosMFK7JgveHLqK-Hh9ERF28tR1JVFV15Zp6-wJ-E93OPlpvL8eDJP15pRDHIaHao7Xnfx5_1hnjtjnFPvdsb92b-k3REVVmyZKsUj5CLYyh-g7duCOJaiP7fGtwvNEfGd75bdlQr3Fvg3Oq451os4_zqF2wghTyk4J2j7Ixniypj');
+                  "></div>
+              </div>
+              <div
+                class="flex flex-col gap-6 w-full @[864px]:w-1/2 justify-center">
+                <div class="flex flex-col gap-3 text-left">
+                  <h1
+                    class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                    Empowering Learners Worldwide
+                  </h1>
+                  <p
+                    class="text-slate-500 dark:text-slate-400 text-base md:text-lg font-normal leading-relaxed">
+                    We are dedicated to providing free, accessible, and
+                    high-quality educational content for everyone. Join our
+                    growing community of lifelong learners and curious minds
+                    today.
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                  <button
+                    class="flex items-center justify-center rounded-lg h-12 px-6 bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors shadow-lg shadow-blue-500/20">
+                    <span class="truncate">Join Our Community</span>
+                  </button>
+                  <button
+                    class="flex items-center justify-center rounded-lg h-12 px-6 bg-transparent border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 text-base font-bold leading-normal transition-colors">
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Mission & Vision -->
+          <section class="py-10">
+            <div class="px-4 pb-6">
+              <h2
+                class="text-slate-900 dark:text-white text-[28px] font-bold leading-tight tracking-tight">
+                Our Purpose
+              </h2>
+              <div class="h-1 w-20 bg-primary mt-2 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+              <!-- Mission Card -->
+              <div
+                class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div
+                  class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-[32px]"
+                    >public</span
+                  >
+                </div>
+                <div class="flex flex-col gap-2">
+                  <h3
+                    class="text-slate-900 dark:text-white text-xl font-bold leading-tight">
+                    Our Mission
+                  </h3>
+                  <p
+                    class="text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+                    To democratize education through open-source knowledge and
+                    make complex learning topics accessible to anyone, anywhere,
+                    regardless of their background or resources.
+                  </p>
+                </div>
+              </div>
+              <!-- Vision Card -->
+              <div
+                class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div
+                  class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-[32px]"
+                    >visibility</span
+                  >
+                </div>
+                <div class="flex flex-col gap-2">
+                  <h3
+                    class="text-slate-900 dark:text-white text-xl font-bold leading-tight">
+                    Our Vision
+                  </h3>
+                  <p
+                    class="text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+                    A world where quality learning resources are just a click
+                    away, bridging the gap between curiosity and expertise, and
+                    fostering a global culture of continuous improvement.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Our Story Section -->
+          <section class="py-10">
+            <div class="flex flex-col md:flex-row gap-10 px-4 items-center">
+              <div class="w-full md:w-1/2 flex flex-col gap-4">
+                <div class="pb-2">
+                  <h2
+                    class="text-slate-900 dark:text-white text-[28px] font-bold leading-tight tracking-tight">
+                    Our Story
+                  </h2>
+                  <div class="h-1 w-20 bg-primary mt-2 rounded-full"></div>
+                </div>
+                <div
+                  class="prose dark:prose-invert text-slate-500 dark:text-slate-400 leading-relaxed">
+                  <p class="mb-4">
+                    EduBlog started as a small passion project in a university
+                    dorm room. Frustrated by the lack of up-to-date and free
+                    resources for modern web technologies, we decided to take
+                    notes publicly.
+                  </p>
+                  <p class="mb-4">
+                    What began as a simple collection of markdown files has
+                    grown into a comprehensive platform serving thousands of
+                    learners daily. We believe that knowledge should not be
+                    gated behind paywalls.
+                  </p>
+                  <p>
+                    Today, we are a small but dedicated team of educators,
+                    developers, and writers working together to build the best
+                    free learning hub on the internet.
+                  </p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/2">
+                <div
+                  class="aspect-square md:aspect-[4/3] w-full bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden relative shadow-lg">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center"
+                    data-alt="Team working together in a modern collaborative office space"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwi_JJZGHbOdraKN5m1GfTMPEwl9GXcmLswPbswuHwAlDvHptYRrMFo1NQsx4RD0sGGqgGg9cbIwcSyJeTlwOR0-7jBr1XG7wiX5ENxc5VENxBBsxFpPqt_tRn1zxvHVYvS4oxqOHtSCWURMtVFNMGYswE0vIbaIlGGmf0tZNX5KR644evaB8oasSC7iasrcIbKNzdz-HrDuVmt_on3jJCZ-nDjUm1FOrWF_bv6SjhhSwt-52iSjKl9UHM4DsutnvUoX8m0ZfrSj2O');
+                    "></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- What We Offer -->
+          <section
+            class="py-12 bg-white dark:bg-slate-800/50 rounded-2xl my-8 border border-slate-100 dark:border-slate-800/50">
+            <div class="px-8 pb-10 text-center max-w-2xl mx-auto">
+              <h2
+                class="text-slate-900 dark:text-white text-[28px] font-bold leading-tight tracking-tight mb-3">
+                What We Offer
+              </h2>
+              <p class="text-slate-500 dark:text-slate-400">
+                Everything you need to go from beginner to pro, completely free.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 px-8">
+              <!-- Offer 1 -->
+              <div class="flex flex-col items-center text-center gap-4">
+                <div
+                  class="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary mb-2">
+                  <span class="material-symbols-outlined text-[36px]"
+                    >menu_book</span
+                  >
+                </div>
+                <h3 class="text-slate-900 dark:text-white text-lg font-bold">
+                  In-depth Tutorials
+                </h3>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                  Comprehensive guides that take you through complex topics
+                  step-by-step with real-world examples.
+                </p>
+              </div>
+              <!-- Offer 2 -->
+              <div class="flex flex-col items-center text-center gap-4">
+                <div
+                  class="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary mb-2">
+                  <span class="material-symbols-outlined text-[36px]"
+                    >school</span
+                  >
+                </div>
+                <h3 class="text-slate-900 dark:text-white text-lg font-bold">
+                  Career Paths
+                </h3>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                  Structured learning paths designed to help you master specific
+                  skills needed for the job market.
+                </p>
+              </div>
+              <!-- Offer 3 -->
+              <div class="flex flex-col items-center text-center gap-4">
+                <div
+                  class="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary mb-2">
+                  <span class="material-symbols-outlined text-[36px]"
+                    >code</span
+                  >
+                </div>
+                <h3 class="text-slate-900 dark:text-white text-lg font-bold">
+                  Project Based
+                </h3>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                  Learn by doing with our repository of starter projects and
+                  code challenges.
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Our Team -->
+          <section class="py-10 mb-10">
+            <div class="px-4 pb-8">
+              <h2
+                class="text-slate-900 dark:text-white text-[28px] font-bold leading-tight tracking-tight">
+                Meet the Educators
+              </h2>
+              <div class="h-1 w-20 bg-primary mt-2 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
+              <!-- Member 1 -->
+              <div
+                class="flex flex-col items-center gap-3 group cursor-default">
+                <div
+                  class="w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-md group-hover:border-primary transition-colors">
+                  <div
+                    class="w-full h-full bg-cover bg-center"
+                    data-alt="Portrait of Sarah Jenkins, Lead Instructor"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAfcKkTnxhdV4uyxQubfVaF031YmrY81GoJ7PmIDsa6Fw6735jYqoy8n6QYAXiZ5woVFr9MWFELwsHrjNQq5A91j4yuPnTD6_cXsFUuZEwvGe7TI_yuXsOF0am6LEj9-tYm5u7lSV8pGDzwo3gefrL6DXfvj4mcTyDfOnFbsNNzAUltAPlZCeQ7Eh83nJxblYZ1eXjpA3yq8Xa413sezOhKfbggx3AY3cuIyXbUoP1KXDG9xBnrX0miUw-NFq2TLyMGCWO7FOeOgdKC');
+                    "></div>
+                </div>
+                <div class="text-center">
+                  <h4
+                    class="text-slate-900 dark:text-white font-bold text-base">
+                    Sarah Jenkins
+                  </h4>
+                  <p class="text-slate-500 dark:text-slate-400 text-sm">
+                    Lead Instructor
+                  </p>
+                </div>
+              </div>
+              <!-- Member 2 -->
+              <div
+                class="flex flex-col items-center gap-3 group cursor-default">
+                <div
+                  class="w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-md group-hover:border-primary transition-colors">
+                  <div
+                    class="w-full h-full bg-cover bg-center"
+                    data-alt="Portrait of Michael Chen, Senior Developer"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACdQ12MAhLQOTfDXR6tu5FU4ee7RbDGpWR5koKyjYe-mr1U3dGVFxHK_n0RdgIZYwd082RvKdlPHWwWcGMmXAVNiK5KYiVmsABrunsXOKrzG6S39ocwf-Wh7o8-BG54e2AbvemeSVOx-Nh3uwx5iI5zeNfWd9U4I2FH1G590WYhyzlWm4gxb2bvmVU2FDHB8wRnp-UA-X9YC5OV0KqrY_e5PApZz2NbSY9BKE_i99tgx_0YrYfXYpFppMBxRVup9j5XsKUpjtgLgnm');
+                    "></div>
+                </div>
+                <div class="text-center">
+                  <h4
+                    class="text-slate-900 dark:text-white font-bold text-base">
+                    Michael Chen
+                  </h4>
+                  <p class="text-slate-500 dark:text-slate-400 text-sm">
+                    Senior Developer
+                  </p>
+                </div>
+              </div>
+              <!-- Member 3 -->
+              <div
+                class="flex flex-col items-center gap-3 group cursor-default">
+                <div
+                  class="w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-md group-hover:border-primary transition-colors">
+                  <div
+                    class="w-full h-full bg-cover bg-center"
+                    data-alt="Portrait of Priya Patel, Content Strategist"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmKQeSN1atdLfto_Z_Us5LuLj9YylE2V2Tx3e8AIfen7zcnCafd_4YVDYy97iUVjg1ZWI5APK6KeZod6M64mYZhctMCG7RsvbmKpID8YC62sr8IqjU-390szzfwSAEMImEa7TgmHrSwSvmg4M2VXryQIfxf7Dgq0VgHswKIPQTbP-k9jnkro4P6KBkxL5uCLYoQElaniJAZGo9__Z3PbiuC8_NnF-q1UFDuRMWOWYsPbxmWkUI0rJUF_85KsOA73pYvlBLRPCbJ-d3');
+                    "></div>
+                </div>
+                <div class="text-center">
+                  <h4
+                    class="text-slate-900 dark:text-white font-bold text-base">
+                    Priya Patel
+                  </h4>
+                  <p class="text-slate-500 dark:text-slate-400 text-sm">
+                    Content Strategist
+                  </p>
+                </div>
+              </div>
+              <!-- Member 4 -->
+              <div
+                class="flex flex-col items-center gap-3 group cursor-default">
+                <div
+                  class="w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-md group-hover:border-primary transition-colors">
+                  <div
+                    class="w-full h-full bg-cover bg-center"
+                    data-alt="Portrait of James Wilson, Community Manager"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA82YRXBej9EFPZSwJz0JKeoUrKG3fRqJ3dziwYoHvH66ZrEC9RUaFM0Jm_l8n_5slRfTGKYuT0IycDZJi_txQ2C4qKKMgcuD_AT3yfphcdfYWGRQxo75flzvKpGO_mKAIbJHmuQ36VooB32J3YpPy36Jv2ef0EIfH3m-pDto7VdMN80SGcZoET3k87qfPcII57O_r-HDZVfa-X9_7mUyMGl4NFShG4z8ZSgPn_2R05l14h8gOTB_sCG7O_AAD5mVpaT0g2OEmose-o');
+                    "></div>
+                </div>
+                <div class="text-center">
+                  <h4
+                    class="text-slate-900 dark:text-white font-bold text-base">
+                    James Wilson
+                  </h4>
+                  <p class="text-slate-500 dark:text-slate-400 text-sm">
+                    Community Manager
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <!-- Footer -->
+      <footer
+        class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 mt-auto">
+        <div
+          class="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col md:flex-row justify-between gap-10">
+          <div class="flex flex-col gap-4 max-w-xs">
+            <div class="flex items-center gap-3 text-slate-900 dark:text-white">
+              <div class="size-6 text-primary">
+                <svg
+                  fill="currentColor"
+                  viewbox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    clip-rule="evenodd"
+                    d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                    fill-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="font-bold text-lg">EduBlog</span>
+            </div>
+            <p class="text-slate-500 dark:text-slate-400 text-sm">
+              Empowering the next generation of creators and thinkers through
+              open education.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-10 md:gap-20">
+            <div class="flex flex-col gap-3">
+              <h5 class="text-slate-900 dark:text-white font-bold text-sm">
+                Platform
+              </h5>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >Courses</a
+              >
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >Tutorials</a
+              >
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >Community</a
+              >
+            </div>
+            <div class="flex flex-col gap-3">
+              <h5 class="text-slate-900 dark:text-white font-bold text-sm">
+                Company
+              </h5>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >About Us</a
+              >
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >Careers</a
+              >
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >Contact</a
+              >
+            </div>
+            <div class="flex flex-col gap-3">
+              <h5 class="text-slate-900 dark:text-white font-bold text-sm">
+                Legal
+              </h5>
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >Privacy Policy</a
+              >
+              <a
+                class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm"
+                href="#"
+                >Terms of Service</a
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="max-w-[960px] mx-auto px-4 md:px-10 mt-10 pt-6 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-slate-400">
+          <p>© 2024 EduBlog Inc. All rights reserved.</p>
+          <div class="flex gap-4">
+            <span
+              class="material-symbols-outlined text-[18px] cursor-pointer hover:text-primary"
+              >thumb_up</span
+            >
+            <span
+              class="material-symbols-outlined text-[18px] cursor-pointer hover:text-primary"
+              >share</span
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+

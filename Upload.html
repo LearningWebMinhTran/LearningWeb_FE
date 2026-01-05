@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Create New Blog Post - Learn AI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet" />
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1;
+        border-radius: 20px;
+      }
+      .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #4b5563;
+      }
+      .editor-content {
+        min-height: 400px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-sans h-screen flex overflow-hidden transition-colors duration-200">
+    <aside
+      class="w-64 flex-shrink-0 border-r border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark flex flex-col h-full">
+      <div
+        class="p-4 border-b border-border-light dark:border-border-dark flex items-center justify-between">
+        <h1 class="text-xl font-bold flex items-center gap-2">
+          <span class="material-icons-outlined text-primary">school</span>
+          Learn AI
+        </h1>
+        <div class="flex gap-2 text-text-muted-light dark:text-text-muted-dark">
+          <button class="hover:text-primary transition-colors">
+            <span class="material-icons-outlined text-lg">link</span>
+          </button>
+          <button class="hover:text-primary transition-colors">
+            <span class="material-icons-outlined text-lg">dark_mode</span>
+          </button>
+        </div>
+      </div>
+      <nav class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1">
+        <a
+          class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+          href="#">
+          <span class="material-icons-outlined text-lg">dashboard</span> Tổng
+          quan
+        </a>
+        <a
+          class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+          href="#">
+          <span class="material-icons-outlined text-lg">lightbulb</span> Project
+          Ideas
+        </a>
+        <div
+          class="pt-4 pb-1 px-3 text-xs font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider">
+          Content Management
+        </div>
+        <a
+          class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-primary bg-blue-50 dark:bg-blue-900/20 rounded-md"
+          href="#">
+          <span class="material-icons-outlined text-lg">edit_note</span> Create
+          Post
+        </a>
+        <a
+          class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+          href="#">
+          <span class="material-icons-outlined text-lg">folder_open</span> All
+          Posts
+        </a>
+        <a
+          class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+          href="#">
+          <span class="material-icons-outlined text-lg">category</span>
+          Categories
+        </a>
+        <div
+          class="pt-4 pb-1 px-3 text-xs font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider">
+          Modules
+        </div>
+        <div>
+          <button
+            class="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-text-main-light dark:text-text-main-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md group">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-lg">book</span> 01. LLM
+              Fundamentals
+            </div>
+            <span
+              class="material-icons-outlined text-sm text-text-muted-light group-hover:text-primary"
+              >expand_more</span
+            >
+          </button>
+        </div>
+        <div>
+          <button
+            class="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-text-main-light dark:text-text-main-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md group">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-lg">storage</span> 02.
+              RAG
+            </div>
+            <span
+              class="material-icons-outlined text-sm text-text-muted-light group-hover:text-primary"
+              >expand_more</span
+            >
+          </button>
+        </div>
+        <div>
+          <button
+            class="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-primary bg-blue-50 dark:bg-blue-900/20 rounded-md group">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-lg">hub</span> 03.
+              Orchestration
+            </div>
+            <span class="material-icons-outlined text-sm text-primary"
+              >expand_less</span
+            >
+          </button>
+          <div
+            class="ml-9 mt-1 space-y-1 border-l-2 border-border-light dark:border-border-dark pl-2">
+            <a
+              class="block px-3 py-1.5 text-sm text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary"
+              href="#"
+              >01. Memory Management</a
+            >
+            <a
+              class="block px-3 py-1.5 text-sm font-medium text-primary"
+              href="#"
+              >02. Chains &amp; Routing</a
+            >
+          </div>
+        </div>
+      </nav>
+      <div class="p-4 border-t border-border-light dark:border-border-dark">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-8 w-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">
+            JD
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium truncate">John Doe</p>
+            <p
+              class="text-xs text-text-muted-light dark:text-text-muted-dark truncate">
+              Admin
+            </p>
+          </div>
+          <span
+            class="material-icons-outlined text-text-muted-light cursor-pointer"
+            >settings</span
+          >
+        </div>
+      </div>
+    </aside>
+    <main
+      class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
+      <header
+        class="h-16 flex items-center justify-between px-6 border-b border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark flex-shrink-0 z-10">
+        <div class="flex items-center gap-4">
+          <h2
+            class="text-lg font-semibold text-text-main-light dark:text-text-main-dark">
+            Create New Blog Post
+          </h2>
+          <span
+            class="px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 border border-yellow-200 dark:border-yellow-800"
+            >Draft</span
+          >
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            class="px-4 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors">
+            Preview
+          </button>
+          <button
+            class="px-4 py-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark border border-border-light dark:border-border-dark rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+            Save Draft
+          </button>
+          <button
+            class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-hover rounded-md shadow-sm transition-colors flex items-center gap-2">
+            <span class="material-icons-outlined text-sm">publish</span> Publish
+          </button>
+        </div>
+      </header>
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10">
+        <div
+          class="max-w-[1600px] mx-auto grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <div class="xl:col-span-2 space-y-6">
+            <div class="space-y-2">
+              <label
+                class="block text-sm font-medium text-text-muted-light dark:text-text-muted-dark"
+                for="post-title"
+                >Post Title</label
+              >
+              <input
+                class="w-full px-4 py-3 text-xl font-bold bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none placeholder-gray-400 dark:placeholder-gray-600 transition-shadow"
+                id="post-title"
+                placeholder="Enter an engaging title..."
+                type="text" />
+            </div>
+            <div
+              class="flex items-center gap-2 text-sm text-text-muted-light dark:text-text-muted-dark bg-gray-50 dark:bg-gray-800/50 p-2 rounded border border-border-light dark:border-border-dark">
+              <span class="material-icons-outlined text-base">link</span>
+              <span class="select-none opacity-70">learn-ai.com/blog/</span>
+              <input
+                class="bg-transparent border-none p-0 text-text-main-light dark:text-text-main-dark focus:ring-0 w-full text-sm"
+                type="text"
+                value="enter-an-engaging-title" />
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+              <div class="flex flex-col gap-2">
+                <h3
+                  class="font-semibold text-lg flex items-center gap-2 text-text-main-light dark:text-text-main-dark">
+                  <span class="material-icons-outlined text-primary"
+                    >menu_book</span
+                  >
+                  Lý thuyết
+                </h3>
+                <div
+                  class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg shadow-sm flex flex-col h-full min-h-[600px]">
+                  <div
+                    class="border-b border-border-light dark:border-border-dark p-2 flex flex-wrap gap-1 items-center bg-gray-50 dark:bg-gray-800 rounded-t-lg">
+                    <select
+                      class="text-xs bg-transparent border border-border-light dark:border-border-dark rounded px-2 py-1 text-text-main-light dark:text-text-main-dark mr-2">
+                      <option>Paragraph</option>
+                      <option>Heading 1</option>
+                      <option>Heading 2</option>
+                    </select>
+                    <div
+                      class="h-4 w-px bg-border-light dark:border-border-dark mx-1"></div>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_bold</span
+                      >
+                    </button>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_italic</span
+                      >
+                    </button>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_underlined</span
+                      >
+                    </button>
+                    <div
+                      class="h-4 w-px bg-border-light dark:border-border-dark mx-1"></div>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_list_bulleted</span
+                      >
+                    </button>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg">code</span>
+                    </button>
+                    <div
+                      class="h-4 w-px bg-border-light dark:border-border-dark mx-1"></div>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg">image</span>
+                    </button>
+                  </div>
+                  <div
+                    class="p-6 flex-1 outline-none prose dark:prose-invert max-w-none text-text-main-light dark:text-text-main-dark"
+                    contenteditable="true">
+                    <h2>Introduction to Chains</h2>
+                    <p>
+                      Chains allow you to connect multiple processing steps.
+                      Simple Chains process sequentially.
+                    </p>
+                    <p class="text-gray-400">Write theory content here...</p>
+                  </div>
+                  <div
+                    class="px-4 py-2 border-t border-border-light dark:border-border-dark text-xs text-text-muted-light dark:text-text-muted-dark flex justify-between items-center bg-gray-50 dark:bg-gray-800 rounded-b-lg">
+                    <span>Words: 15</span>
+                    <span>Last saved: Just now</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3
+                  class="font-semibold text-lg flex items-center gap-2 text-text-main-light dark:text-text-main-dark">
+                  <span class="material-icons-outlined text-green-600"
+                    >code</span
+                  >
+                  Thực hành
+                </h3>
+                <div
+                  class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg shadow-sm flex flex-col h-full min-h-[600px]">
+                  <div
+                    class="border-b border-border-light dark:border-border-dark p-2 flex flex-wrap gap-1 items-center bg-gray-50 dark:bg-gray-800 rounded-t-lg">
+                    <select
+                      class="text-xs bg-transparent border border-border-light dark:border-border-dark rounded px-2 py-1 text-text-main-light dark:text-text-main-dark mr-2">
+                      <option>Code Block</option>
+                      <option>Paragraph</option>
+                      <option>Heading 1</option>
+                    </select>
+                    <div
+                      class="h-4 w-px bg-border-light dark:border-border-dark mx-1"></div>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_bold</span
+                      >
+                    </button>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_italic</span
+                      >
+                    </button>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_underlined</span
+                      >
+                    </button>
+                    <div
+                      class="h-4 w-px bg-border-light dark:border-border-dark mx-1"></div>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg"
+                        >format_list_numbered</span
+                      >
+                    </button>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg">code</span>
+                    </button>
+                    <div
+                      class="h-4 w-px bg-border-light dark:border-border-dark mx-1"></div>
+                    <button
+                      class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 text-text-muted-light dark:text-text-muted-dark transition">
+                      <span class="material-icons-outlined text-lg">image</span>
+                    </button>
+                  </div>
+                  <div
+                    class="p-6 flex-1 outline-none prose dark:prose-invert max-w-none text-text-main-light dark:text-text-main-dark"
+                    contenteditable="true">
+                    <pre
+                      class="bg-gray-800 text-gray-100 p-4 rounded-md font-mono text-sm">
+const chain = new SimpleChain({
+  model: 'gpt-4',
+  temperature: 0.7
+});</pre
+                    >
+                    <p class="text-gray-400 mt-4">
+                      Write practice exercises or code examples here...
+                    </p>
+                  </div>
+                  <div
+                    class="px-4 py-2 border-t border-border-light dark:border-border-dark text-xs text-text-muted-light dark:text-text-muted-dark flex justify-between items-center bg-gray-50 dark:bg-gray-800 rounded-b-lg">
+                    <span>Words: 12</span>
+                    <span>Last saved: Just now</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="xl:col-span-1 space-y-6">
+            <div
+              class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg p-5 shadow-sm">
+              <h3
+                class="text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-4 flex items-center gap-2">
+                <span class="material-icons-outlined text-primary text-lg"
+                  >tune</span
+                >
+                Post Settings
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <label
+                    class="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5"
+                    >Visibility</label
+                  >
+                  <select
+                    class="w-full bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-primary outline-none">
+                    <option>Public</option>
+                    <option>Private</option>
+                    <option>Members Only</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    class="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5"
+                    >Publish Date</label
+                  >
+                  <input
+                    class="w-full bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-primary outline-none"
+                    type="date" />
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg p-5 shadow-sm">
+              <h3
+                class="text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-4 flex items-center gap-2">
+                <span class="material-icons-outlined text-blue-500 text-lg"
+                  >category</span
+                >
+                Taxonomy
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <label
+                    class="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5"
+                    >Folder</label
+                  >
+                  <div class="relative">
+                    <select
+                      class="w-full bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-primary outline-none appearance-none cursor-pointer">
+                      <option disabled="" selected="" value="">
+                        Select a folder
+                      </option>
+                      <option>AI Fundamentals</option>
+                      <option>Advanced LLM</option>
+                      <option>Projects</option>
+                      <option>Uncategorized</option>
+                    </select>
+                    <span
+                      class="absolute right-3 top-2.5 material-icons-outlined text-sm pointer-events-none text-text-muted-light"
+                      >folder</span
+                    >
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5"
+                    >Category</label
+                  >
+                  <div class="relative">
+                    <select
+                      class="w-full bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-primary outline-none appearance-none cursor-pointer">
+                      <option>LLM Fundamentals</option>
+                      <option selected="">Orchestration</option>
+                      <option>RAG</option>
+                      <option>Agents</option>
+                    </select>
+                    <span
+                      class="absolute right-3 top-2.5 material-icons-outlined text-sm pointer-events-none text-text-muted-light"
+                      >expand_more</span
+                    >
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="block text-xs font-medium text-text-muted-light dark:text-text-muted-dark mb-1.5"
+                    >Tags</label
+                  >
+                  <div
+                    class="p-2 bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-md min-h-[80px] flex flex-wrap gap-2 content-start">
+                    <span
+                      class="bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 text-xs px-2 py-1 rounded flex items-center gap-1">
+                      #langchain
+                      <button class="hover:text-red-500">
+                        <span class="material-icons-outlined text-[10px]"
+                          >close</span
+                        >
+                      </button>
+                    </span>
+                    <span
+                      class="bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 text-xs px-2 py-1 rounded flex items-center gap-1">
+                      #routing
+                      <button class="hover:text-red-500">
+                        <span class="material-icons-outlined text-[10px]"
+                          >close</span
+                        >
+                      </button>
+                    </span>
+                    <input
+                      class="bg-transparent text-xs outline-none w-20 p-1 text-text-main-light dark:text-text-main-dark placeholder-gray-400"
+                      placeholder="+ Add tag"
+                      type="text" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg p-5 shadow-sm">
+              <h3
+                class="text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-4 flex items-center gap-2">
+                <span class="material-icons-outlined text-green-500 text-lg"
+                  >image</span
+                >
+                Featured Image
+              </h3>
+              <div
+                class="border-2 border-dashed border-border-light dark:border-border-dark rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                <span
+                  class="material-icons-outlined text-3xl text-text-muted-light dark:text-text-muted-dark group-hover:text-primary mb-2 transition-colors"
+                  >cloud_upload</span
+                >
+                <p
+                  class="text-xs text-text-muted-light dark:text-text-muted-dark">
+                  Click to upload or drag and drop
+                </p>
+                <p class="text-[10px] text-gray-400 mt-1">
+                  SVG, PNG, JPG or GIF (max. 2MB)
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg p-5 shadow-sm">
+              <div class="flex justify-between items-center mb-2">
+                <h3
+                  class="text-sm font-semibold text-text-main-light dark:text-text-main-dark flex items-center gap-2">
+                  <span class="material-icons-outlined text-purple-500 text-lg"
+                    >search</span
+                  >
+                  SEO Preview
+                </h3>
+                <span
+                  class="text-xs text-green-600 dark:text-green-400 font-medium bg-green-100 dark:bg-green-900/30 px-1.5 py-0.5 rounded"
+                  >Good</span
+                >
+              </div>
+              <div
+                class="p-3 bg-gray-50 dark:bg-gray-900 rounded border border-border-light dark:border-border-dark">
+                <p
+                  class="text-xs text-text-muted-light dark:text-text-muted-dark truncate">
+                  https://learn-ai.com/blog/enter-an-engaging-title
+                </p>
+                <p
+                  class="text-sm text-blue-600 dark:text-blue-400 font-medium truncate mt-0.5">
+                  Introduction to Chains &amp; Routing - Learn AI
+                </p>
+                <p
+                  class="text-xs text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                  Learn how to connect multiple processing steps with LLMs to
+                  create complex workflows using Simple Chains and Router
+                  Patterns.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Simple theme toggle logic
+      const toggleButton = document.querySelector(
+        'button span.material-icons-outlined:contains("dark_mode")'
+      ); // Naive selector for demo
+      // Better selector actually
+      const themeBtn = document.querySelectorAll("button")[1];
+      themeBtn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        const icon = themeBtn.querySelector("span");
+        if (document.documentElement.classList.contains("dark")) {
+          icon.textContent = "light_mode";
+        } else {
+          icon.textContent = "dark_mode";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+

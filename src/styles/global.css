@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@config "../../tailwind.config.cjs";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Lexend", sans-serif;
+}
+
+button,
+label,
+a {
+  user-select: none;
+}
+
+button {
+  caret-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 20px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+}
+
+.editor-content {
+  min-height: 400px;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.form-select {
+  background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDTnaCYgakfzpKJ81V9HlSO1ct3F86BrvDaI52BtsQe0p76aH5VXjsn4Vk9XW57ddnRy8_HW-BLjs1jPWZKSQwuniJbJYe8qGRYewyLan1nTVt1WdR70dU7ggOAhuEcWlRIS7z5Cs41hjI8ehL53TAerY5KMCjHvQKGANQKUiwchw5Muf5BsVus_Ep39sWisUYA3zKDadu456dtsY2i4w68Prg1HjB_8nZLVFXv0hCnhzlDQil7i61ZPZOM-Wt4NXyoGk7wwtfMP7my);
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
